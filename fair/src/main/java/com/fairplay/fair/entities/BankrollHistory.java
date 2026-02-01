@@ -1,44 +1,34 @@
 package com.fairplay.fair.entities;
 
-import java.util.List;
-import java.util.UUID;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@Entity
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@Table(name = "users")
-public class User {
-    
+@NoArgsConstructor
+@Table(name = "bankroll_history", uniqueConstraints = {
+        @UniqueConstraint(columnNames = { "user_id", "month" })
+})
+public class BankrollHistory {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    @Column(nullable = false, length = 50)
-    private String firstName;
-
-    @Column(nullable = false, length = 50)
-    private String lastName;
-
-    @Column(nullable = false, unique = true, length = 100)
-    private String email;
-
-    @Column(nullable = false, length = 255)
-    private String password;
-
+    @Column(nullable = false)
     private Integer month;
 
     @Column(nullable = false)
@@ -50,6 +40,7 @@ public class User {
     @Column(nullable = false)
     private Double finalBankroll;
 
-    @OneToMany(mappedBy = "user")
-    private List<Bet> bets;
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 }

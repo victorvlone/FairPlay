@@ -1,6 +1,8 @@
 package com.fairplay.fair.entities;
 
-import com.fairplay.fair.entities.enums.RecommendBet;
+import java.time.LocalDateTime;
+
+import com.fairplay.fair.entities.enums.BetType;
 import com.fairplay.fair.entities.enums.Result;
 
 import jakarta.persistence.Column;
@@ -30,6 +32,9 @@ public class Match {
     private Long id;
 
     @Column(nullable = false)
+    private LocalDateTime matchDate;
+
+    @Column(nullable = false)
     private Integer over15;
 
     @Column(nullable = false)
@@ -43,7 +48,11 @@ public class Match {
 
     @Enumerated(EnumType.STRING)
     @Column(length = 30)
-    private RecommendBet recommendBet;
+    private BetType recommendBet;
+
+    @Enumerated(EnumType.STRING)
+    @Column(length = 30)
+    private BetType betMade;
 
     @Enumerated(EnumType.STRING)
     @Column(length = 30)
@@ -56,4 +65,8 @@ public class Match {
     @ManyToOne
     @JoinColumn(name = "away_team_id", nullable = false)
     private Team awayTeam;
+
+    @ManyToOne
+    @JoinColumn(name = "league_id", nullable = false)
+    private League league;
 }
