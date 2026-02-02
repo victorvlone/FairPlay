@@ -46,6 +46,11 @@ public class LeagueService {
         return leagueRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Liga não encontrada"));
     }
+    
+    //BUSCAR TODAS AS LIGAS DENTRO DE UM DETERMINADO PÁIS
+    public List<League> getLeaguesByCountryName(String countryName) {
+        return leagueRepository.findByCountryNameIgnoreCase(countryName);
+    }
 
     public League updateLeague(Long id, LeagueDTO dto) {
 

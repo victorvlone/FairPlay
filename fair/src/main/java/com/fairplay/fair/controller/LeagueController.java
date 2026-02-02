@@ -40,9 +40,14 @@ public class LeagueController {
         return ResponseEntity.ok(leagueService.getLeagueById(id));
     }
 
+    @GetMapping("/country/{countryName}")
+    public ResponseEntity<List<League>> getLeaguesByCountry(@PathVariable String countryName) {
+        return ResponseEntity.ok(leagueService.getLeaguesByCountryName(countryName));
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<League> update(@PathVariable Long id,
-                                         @RequestBody LeagueDTO dto) {
+            @RequestBody LeagueDTO dto) {
         return ResponseEntity.ok(leagueService.updateLeague(id, dto));
     }
 
