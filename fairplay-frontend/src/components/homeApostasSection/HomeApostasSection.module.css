@@ -1,0 +1,85 @@
+.HomeApostasSection_container {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  gap: 2.4rem;
+  flex-direction: column;
+  text-shadow: var(--text-shadow);
+}
+
+.HomeApostasSection_container h2 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  background: linear-gradient(180deg, #71aa80, #11492c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.HomeApostasSection_container p {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #11492c;
+}
+
+.HomeApostasSection_container img {
+  width: 100%;
+}
+@media (min-width: 650px) and (max-width: 1279px) {
+  .HomeApostasSection_container {
+    display: grid;
+  }
+  .img_first {
+    grid-column: 1 / span 6;
+    grid-row: 1;
+    width: 100%;
+  }
+  .text_first {
+    grid-column: 7 / span 5;
+    grid-row: 1;
+    text-align: left;
+  }
+  .text_second {
+    grid-column: 2 / span 5;
+    grid-row: 2;
+    text-align: right;
+  }
+  .img_second {
+    grid-column: 7 / span 6;
+    grid-row: 2;
+    width: 100%;
+  }
+}
+
+@media (min-width: 1280px) {
+  .HomeApostasSection_container {
+    display: grid;
+  }
+  .HomeApostasSection_container h2 {
+    font-size: 7rem;
+  }
+    .HomeApostasSection_container p {
+    font-size: 1.6rem;
+  }
+  .img_first,
+  .img_second {
+    max-width: 40rem;
+  }
+  .img_first {
+    grid-column: 1 / span 5;
+    grid-row: 1;
+  }
+  .text_first {
+    grid-column: 7 / span 6;
+    grid-row: 1;
+    text-align: left;
+  }
+  .text_second {
+    grid-column: 1 / span 6;
+    grid-row: 2;
+    text-align: right;
+  }
+  .img_second {
+    grid-column: 8 / span 5;
+    grid-row: 2;
+  }
+}
