@@ -1,0 +1,40 @@
+.desempenhoTable_section {
+  display: grid;
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
+}
+.desempenhoTable_section h5 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--verde-escuro);
+  text-shadow: var(--text-shadow);
+}
+.desempenhoTable_buttons {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+.desempenhoTable_buttons button {
+  border-radius: 1rem;
+  background: linear-gradient(var(--verde-claro), var(--verde-escuro));
+  font-size: 1rem;
+  font-weight: 700;
+  color: white;
+  padding: 0.4rem 1.7rem;
+  transition:
+    background 0.5s ease-in-out,
+    color 0.5s ease-in-out;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+.desempenhoTable_buttons button:hover {
+  background: white;
+  color: var(--verde-escuro);
+}
+@media (min-width: 1280px) {
+  .desempenhoTable_section h5,
+  .desempenhoTable_buttons button {
+    font-size: 1.5rem;
+  }
+}
