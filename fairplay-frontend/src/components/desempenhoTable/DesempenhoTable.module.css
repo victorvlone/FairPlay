@@ -2,13 +2,6 @@
   display: grid;
   align-items: center;
   text-align: center;
-  gap: 1.5rem;
-}
-.desempenhoTable_section h5 {
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--verde-escuro);
-  text-shadow: var(--text-shadow);
 }
 .desempenhoTable_buttons {
   display: flex;
@@ -18,7 +11,7 @@
 }
 .desempenhoTable_buttons button {
   border-radius: 1rem;
-  background: linear-gradient(var(--verde-claro), var(--verde-escuro));
+  background-color: var(--azul);
   font-size: 1rem;
   font-weight: 700;
   color: white;
@@ -30,11 +23,17 @@
 }
 .desempenhoTable_buttons button:hover {
   background: white;
-  color: var(--verde-escuro);
+  color: var(--azul);
 }
 @media (min-width: 1280px) {
   .desempenhoTable_section h5,
   .desempenhoTable_buttons button {
     font-size: 1.5rem;
+  }
+  .col_7 {
+    grid-column: span 7;
+  }
+  .desempenhoTable_section {
+    gap: 2.7rem;
   }
 }

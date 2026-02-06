@@ -14,7 +14,11 @@ body,
 
 body {
   font-family: "Poppins", sans-serif;
-  background-color: #ffffff;
+  background: url(../src/assets/background.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
   color: #111;
   -webkit-font-smoothing: antialiased;
 }

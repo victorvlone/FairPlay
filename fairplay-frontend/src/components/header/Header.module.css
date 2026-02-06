@@ -24,7 +24,7 @@
   font-weight: 600;
 }
 .header_nav_buttons button:first-child {
-  background: linear-gradient(var(--verde-claro), var(--verde-escuro));
+  background: var(--azul);
   border-radius: 5px;
   font-family: "Poppins", sans-serif;
   width: 9.6rem;
@@ -33,21 +33,21 @@
   transition: box-shadow 0.2s ease-in-out;
 }
 .header_nav_buttons button:first-child:hover {
-  box-shadow: 0 0px 6px var(--verde-claro);
+  box-shadow: 0 0px 6px var(--azul);
 }
 .header_nav_buttons button:nth-child(2) {
-  color: var(--verde-escuro);
+  color: white;
   transition: color 0.2s ease-in-out;
 }
 .header_nav_buttons button:nth-child(2):hover {
-  color: var(--verde-claro);
+  color: var(--azul);
 }
 .header_nav ul {
   display: flex;
   font-weight: 600;
   list-style: none;
   text-transform: uppercase;
-  color: var(--verde-escuro);
+  color: white;
 }
 .header_nav ul li {
   transition: color 0.2s ease-in-out;
@@ -55,7 +55,7 @@
 }
 
 .header_nav ul li:hover {
-  color: var(--verde-claro);
+  color: var(--azul);
 }
 .header_nav_icons{
     display: flex;
@@ -75,6 +75,12 @@
   }
 }
 @media (min-width: 1280px) {
+  .header h1{
+    text-transform: uppercase;
+    color: white;
+    font-size: 3.2rem;
+    font-weight: 500;
+  }
   .header_nav_list {
     display: flex;
   }
