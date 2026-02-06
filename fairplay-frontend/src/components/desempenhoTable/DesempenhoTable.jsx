@@ -1,8 +1,8 @@
 import styles from "./DesempenhoTable.module.css";
 
-function DesempenhoTable() {
+function DesempenhoTable({ className }) {
   return (
-    <section className={`${styles.desempenhoTable_section} ${styles.col_7}`}>
+    <section className={`${styles.desempenhoTable_section} ${className}`}>
       <div className={styles.desempenhoTable_buttons}>
         <button>Time</button>
         <button>Campeonato</button>

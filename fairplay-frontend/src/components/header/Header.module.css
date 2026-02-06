@@ -2,11 +2,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  color: white;
 }
-.header img {
-  width: 150px;
-  filter: drop-shadow(var(--text-shadow));
-}
+  .header h1{
+    text-transform: uppercase;
+    font-size: 3.2rem;
+    font-weight: 500;
+  }
 .header_nav {
   display: flex;
   gap: 10px;
@@ -75,12 +77,6 @@
   }
 }
 @media (min-width: 1280px) {
-  .header h1{
-    text-transform: uppercase;
-    color: white;
-    font-size: 3.2rem;
-    font-weight: 500;
-  }
   .header_nav_list {
     display: flex;
   }

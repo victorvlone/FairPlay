@@ -1,19 +1,30 @@
 import logo from "../../assets/logo_fairPlay.svg";
 import { LogIn, Menu } from "lucide-react";
 import styles from "./Header.module.css";
+import { Link } from "react-router-dom";
 
 function Header() {
   return (
     <div className="content-wrapper-center">
       <header className={styles.header}>
-        <h1>Fairplay</h1>
+        <Link to="/">
+          <h1>Fairplay</h1>
+        </Link>
         <nav className={styles.header_nav}>
           <div className={styles.header_nav_list}>
             <ul>
-              <li>Aposta</li>
-              <li>Desempenho</li>
-              <li>Objetivos</li>
-              <li>Ciclos</li>
+              <li>
+                <Link to="/aposta">Aposta</Link>
+              </li>
+              <li>
+                <Link to="/desempenho">Desempenho</Link>
+              </li>
+              <li>
+                <Link to="/objetivos">Objetivos</Link>
+              </li>
+              <li>
+                <Link to="/ciclos">Ciclos</Link>
+              </li>
             </ul>
             <div className={styles.header_nav_buttons}>
               <button>Cadastrar</button>

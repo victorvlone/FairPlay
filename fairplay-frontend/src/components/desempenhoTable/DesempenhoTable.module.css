@@ -2,6 +2,7 @@
   display: grid;
   align-items: center;
   text-align: center;
+  gap: 2rem;
 }
 .desempenhoTable_buttons {
   display: flex;
@@ -29,9 +30,6 @@
   .desempenhoTable_section h5,
   .desempenhoTable_buttons button {
     font-size: 1.5rem;
-  }
-  .col_7 {
-    grid-column: span 7;
   }
   .desempenhoTable_section {
     gap: 2.7rem;

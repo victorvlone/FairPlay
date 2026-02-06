@@ -5,7 +5,6 @@
 }
 
 .text_section {
-  text-align: center;
   font-weight: 700;
   display: flex;
   flex-direction: column;
@@ -13,13 +12,14 @@
   gap: 1rem;
 }
 .text_section h2 {
-  font-size: 7.5rem;
+  font-size: 3.4rem;
   text-transform: uppercase;
   line-height: 100%;
   text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   color: white;
   font-style: italic;
   font-weight: 500;
+  text-align: center;
 }
 .text_section p {
   font-size: 1rem;
@@ -27,31 +27,31 @@
   text-shadow: var(--text-shadow);
   width: 70%;
   font-weight: 600;
+  display: none;
 }
 
 @media (min-width: 650px) and (max-width: 1279px) {
   .hero_container {
     display: grid;
   }
-  .col_6 {
-    grid-column: span 6;
-  }
   .text_section {
     text-align: left;
+    gap: 3rem;
   }
   .text_section h2 {
-    font-size: 9.6rem;
+    font-size: 4rem;
+    text-align: left;
   }
   .text_section p {
+    text-align: left;
+    font-size: 1.3rem;
     width: 100%;
+    display: grid;
   }
 }
 @media (min-width: 1280px) {
   .hero_container {
     display: grid;
-  }
-  .col_5 {
-    grid-column: span 5;
   }
   .text_section {
     text-align: left;
@@ -59,10 +59,12 @@
   }
   .text_section h2 {
     font-size: 4.7rem;
+    text-align: left;
   }
   .text_section p {
     text-align: left;
     font-size: 1.3rem;
     width: 100%;
+    display: grid;
   }
 }
