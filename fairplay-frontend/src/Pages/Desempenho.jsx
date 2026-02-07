@@ -5,7 +5,7 @@ function Desempenho() {
   return (
     <div className="content-wrapper-center row">
         <HeroPages
-          className="sm-12 col-5"
+          className="sm-12 col-6"
           titulo="O refino analítico da sua performance"
           descricao={
             <>

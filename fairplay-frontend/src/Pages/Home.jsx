@@ -1,14 +1,21 @@
-import Hero from "../components/hero/Hero";
-import FeatureGrid from "../components/featureGrid/FeatureGrid";
-import HomeApostasSection from "../components/homeApostasSection/HomeApostasSection";
+import HeroPages from "../components/heroPages/HeroPages";
 
 function Home() {
   return (
-    <>
-      <Hero />
-      <FeatureGrid />
-      <HomeApostasSection />
-    </>
+    <div className="content-wrapper-center row">
+      <HeroPages
+        className="sm-12 col-6 col-7"
+        titulo="Análise preditiva aplicada a apostas esportivas."
+        homePage={false}
+        descricao={
+          <>
+            <p>
+              Transforme estatísticas em decisões mais seguras e bem fundamentadas.
+            </p>
+          </>
+        }
+      />
+    </div>
   );
 }
 

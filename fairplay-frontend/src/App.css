@@ -104,6 +104,9 @@ td {
   .col-5 {
     grid-column: span 5;
   }
+  .col-6 {
+    grid-column: span 6;
+  }
   .col-end-6 {
     grid-column: 7 / -1;
   }
