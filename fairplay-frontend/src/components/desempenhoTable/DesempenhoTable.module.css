@@ -26,6 +26,7 @@
   background: white;
   color: var(--azul);
 }
+
 @media (min-width: 1280px) {
   .desempenhoTable_section h5,
   .desempenhoTable_buttons button {
@@ -33,5 +34,8 @@
   }
   .desempenhoTable_section {
     gap: 2.7rem;
+  }
+  .DesempenhoTable_container {
+    font-size: 1.5rem;
   }
 }

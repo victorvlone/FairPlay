@@ -1,0 +1,16 @@
+.ObjetivosTable_container {
+  text-align: center;
+  font-size: clamp(0.75rem, 0.5vw + 0.6rem, 1rem);
+}
+
+@media (min-width: 650px) and (max-width: 1279px) {
+  .ObjetivosTable_container {
+    font-size: 0.8rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .ObjetivosTable_container {
+    font-size: 0.9rem;
+  }
+}

@@ -6,7 +6,7 @@ function Desempenho() {
     <div className="content-wrapper-center row">
         <HeroPages
           className="sm-12 col-5"
-          titulo="O Refino Analítico da sua Performance"
+          titulo="O refino analítico da sua performance"
           descricao={
             <>
               <p>
@@ -30,7 +30,7 @@ function Desempenho() {
             </>
           }
         />
-        <DesempenhoTable className="sm-12 col-7" />
+        <DesempenhoTable className="sm-12 col-8-10" />
       </div>
   );
 }
