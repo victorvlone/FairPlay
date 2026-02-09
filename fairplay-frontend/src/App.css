@@ -9,16 +9,22 @@
   max-width: 107.6rem;
   margin: auto;
 }
-.hero_main_content {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
 .row {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: 1.6rem;
   align-items: center;
+}
+.row_align_top {
+  align-items: start !important; 
+}
+.hero_home_custom {
+  margin-top: 15rem;
+}
+.hero_main_content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 .sm-12 {
   grid-column: 1 / -1;
@@ -109,6 +115,9 @@ td {
   }
   .col-end-6 {
     grid-column: 7 / -1;
+  }
+  .col-start-8 {
+    grid-column: 8 / -1;
   }
   .col-8-10 {
     grid-column: 8 / 11;

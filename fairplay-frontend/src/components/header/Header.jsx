@@ -3,7 +3,7 @@ import { LogIn, Menu } from "lucide-react";
 import styles from "./Header.module.css";
 import { Link } from "react-router-dom";
 
-function Header() {
+function Header({ onOpenAuth }) {
   return (
     <div className="content-wrapper-center">
       <header className={styles.header}>
@@ -27,8 +27,8 @@ function Header() {
               </li>
             </ul>
             <div className={styles.header_nav_buttons}>
-              <button>Cadastrar</button>
-              <button>Login</button>
+              <button onClick={() => onOpenAuth("cadastro")}>Cadastrar</button>
+              <button onClick={() => onOpenAuth("login")}>Login</button>
             </div>
           </div>
           <div className={styles.header_nav_icons}>

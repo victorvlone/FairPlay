@@ -1,6 +1,7 @@
 import styles from "./ObjetivosTable.module.css";
 
 function ObjetivosTable({ className }) {
+  
   return (
     <div className={`table_container ${className}`}>
       <table className={`custom_table ${styles.ObjetivosTable_container}`}>
