@@ -32,8 +32,8 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-public ResponseEntity<User> findById(@PathVariable UUID id) {
-    User user = userService.findById(id); // Você precisará criar esse método no Service
-    return ResponseEntity.ok(user);
-}
+    public ResponseEntity<User> findById(@PathVariable UUID id) {
+        User user = userService.findById(id); // Você precisará criar esse método no Service
+        return ResponseEntity.ok(user);
+    }
 }
