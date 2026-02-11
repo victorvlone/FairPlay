@@ -14,13 +14,11 @@ body,
 
 body {
   font-family: "Poppins", sans-serif;
-  background:
-    linear-gradient(rgba(0, 0, 0, 0.42), rgba(0, 0, 0, 0.42)),
-    url(../src/assets/background2.png);
-  background-position: center;
+  background: url(../src/assets/background4.png);
+  background-position: top center;
   background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
+  background-size: 100% auto;
+  background-attachment: scroll;
   color: #111;
   -webkit-font-smoothing: antialiased;
 }

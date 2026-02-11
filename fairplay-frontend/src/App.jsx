@@ -5,6 +5,7 @@ import Home from "./Pages/Home"
 import Desempenho from "./Pages/Desempenho";
 import Objetivos from "./Pages/Objetivos";
 import { useState } from "react";
+import Aposta from "./Pages/Aposta";
 function App() {
   const [authConfig, setAuthConfig] = useState({ isOpen: false, mode: 'cadastro' });
 
@@ -20,6 +21,7 @@ function App() {
         />
         <Route path="/desempenho" element={<Desempenho />} />
         <Route path="/objetivos" element={<Objetivos />} />
+        <Route path="/apostas" element={<Aposta />} />
       </Routes>
     </Router>
   );

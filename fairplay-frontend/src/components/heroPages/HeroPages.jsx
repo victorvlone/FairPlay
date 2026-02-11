@@ -1,5 +1,5 @@
 import styles from "./HeroPages.module.css";
-import line from "../../assets/line.png"
+import line from "../../assets/line.png";
 
 function HeroPages({ titulo, descricao, className, homePage = true }) {
   return (

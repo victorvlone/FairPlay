@@ -1,9 +1,11 @@
-import logo from "../../assets/logo_fairPlay.svg";
 import { LogIn, Menu } from "lucide-react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleUser } from "@fortawesome/free-solid-svg-icons";
 import styles from "./Header.module.css";
 import { Link } from "react-router-dom";
 
 function Header({ onOpenAuth }) {
+  const token = localStorage.getItem("token");
   return (
     <div className="content-wrapper-center">
       <header className={styles.header}>
@@ -14,7 +16,7 @@ function Header({ onOpenAuth }) {
           <div className={styles.header_nav_list}>
             <ul>
               <li>
-                <Link to="/aposta">Aposta</Link>
+                <Link to="/apostas">Aposta</Link>
               </li>
               <li>
                 <Link to="/desempenho">Desempenho</Link>
@@ -27,8 +29,19 @@ function Header({ onOpenAuth }) {
               </li>
             </ul>
             <div className={styles.header_nav_buttons}>
-              <button onClick={() => onOpenAuth("cadastro")}>Cadastrar</button>
-              <button onClick={() => onOpenAuth("login")}>Login</button>
+              {!token ? (
+                <>
+                  <button onClick={() => onOpenAuth("cadastro")}>
+                    Cadastrar
+                  </button>
+                  <button onClick={() => onOpenAuth("login")}>Login</button>
+                </>
+              ) : (
+                <FontAwesomeIcon
+                  icon={faCircleUser}
+                  className={styles.icon_user}
+                />
+              )}
             </div>
           </div>
           <div className={styles.header_nav_icons}>

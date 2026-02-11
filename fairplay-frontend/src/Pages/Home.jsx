@@ -18,10 +18,10 @@ function Home({ authConfig, closeAuth }) {
         }
       />
       {authConfig.isOpen && (
-        <Autenticacao 
-          className="sm-12 col-start-8" 
-          initialMode={authConfig.mode} 
-          onClose={closeAuth} 
+        <Autenticacao
+          className="sm-12 col-start-8"
+          initialMode={authConfig.mode}
+          onClose={closeAuth}
         />
       )}
     </div>

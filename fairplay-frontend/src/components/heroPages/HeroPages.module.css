@@ -1,7 +1,13 @@
 .hero_container {
-  align-items: center;
-  flex-direction: column;
-  display: flex;
+  width: 100%;
+    background: url(../src/assets/background3.png);
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  min-height: 100vh;
+  position: relative;
+    padding: 3rem 1rem 2rem;
 }
 
 .text_section {
