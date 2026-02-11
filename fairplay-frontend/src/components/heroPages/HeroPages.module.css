@@ -1,13 +1,12 @@
 .hero_container {
   width: 100%;
-    background: url(../src/assets/background3.png);
+  background: url(../src/assets/background3.png);
   background-position: bottom;
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
-  min-height: 100vh;
-  position: relative;
-    padding: 3rem 1rem 2rem;
+  min-height: 64rem;
+  padding: 3rem 1rem 2rem;
 }
 
 .text_section {
@@ -37,12 +36,12 @@
   display: none;
 }
 .text_section p:first-of-type {
-  display: block; 
+  display: block;
 }
 .text_section br {
   display: none;
 }
-.text_section button{
+.text_section button {
   background: var(--azul);
   border-radius: 5px;
   font-family: "Poppins", sans-serif;

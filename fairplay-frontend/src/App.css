@@ -1,8 +1,11 @@
 :root {
   --text-shadow: 0 1.7px 2px rgba(0, 0, 0, 0.25);
-  --verde-claro: #71aa80;
-  --verde-escuro: #11492c;
   --azul: #0368ff;
+  --dark: #191a23;
+  --branco-f6: #f6f6f6;
+  --box-shadow: 0 5px 0 #191a23;
+  --box-shadow-small: 0 3px 0 #191a23;
+  --border-dark: 1px solid var(--dark);
 }
 .content-wrapper-center {
   padding: 3rem 1rem 2rem;
@@ -17,10 +20,7 @@
   align-items: center;
 }
 .row_align_top {
-  align-items: start !important; 
-}
-.hero_home_custom {
-  margin-top: 15rem;
+  align-items: start !important;
 }
 .hero_main_content {
   display: flex;

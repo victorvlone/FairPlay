@@ -3,7 +3,7 @@ import TeamPerformanceCard from "../components/teamPerformanceCard/TeamPerforman
 
 function Aposta() {
   return (
-    <div className="content-wrapper-center row">
+    <>
       <HeroPages
         className="sm-12 col-6 col-7 hero_home_custom"
         titulo="Análise preditiva aplicada a apostas esportivas."
@@ -17,8 +17,10 @@ function Aposta() {
           </>
         }
       />
-      <TeamPerformanceCard className="sm-12 col-7" />
-    </div>
+      <div className="content-wrapper-center row">
+        <TeamPerformanceCard className="sm-12 col-7" />
+      </div>
+    </>
   );
 }
 

@@ -3,11 +3,19 @@ import line from "../../assets/line.png";
 
 function HeroPages({ titulo, descricao, className, homePage = true }) {
   return (
-    <div className={`${styles.text_section} ${className}`}>
-      <h2 className={styles.titulo}>{titulo}</h2>
-      {homePage && <img src={line} alt="" />}
-      <p className={styles.descricao}>{descricao}</p>
-      {!homePage && <button>Cadastre-se</button>}
+    <div className={styles.hero_container}>
+      <div className="content-wrapper-center">
+        <div className="row row_align_top">
+          <div
+            className={`${styles.text_section} ${className}`}
+          >
+            <h2 className={styles.titulo}>{titulo}</h2>
+            {homePage && <img src={line} alt="" />}
+            <p className={styles.descricao}>{descricao}</p>
+            {!homePage && <button>Cadastre-se</button>}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

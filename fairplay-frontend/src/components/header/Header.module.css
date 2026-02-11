@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: space-between;
   background-color: transparent;
-  color: white;
+  color: var(--dark);
 }
 .header h1 {
   text-transform: uppercase;
@@ -50,7 +50,7 @@
   font-weight: 600;
   list-style: none;
   text-transform: uppercase;
-  color: white;
+  color: var(--dark);
 }
 .header_nav ul li {
   transition: color 0.2s ease-in-out;

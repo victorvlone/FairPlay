@@ -3,21 +3,26 @@
   flex-direction: column;
   width: fit-content;
   align-items: center;
-  gap: 1rem;
-  background-color: rgba(11, 15, 26, 0.5);
+  gap: 2rem;
+  background-color: var(--branco-f6);
+  border: var(--border-dark);
   border-radius: 1rem;
-  box-shadow: 0 0 40px rgba(0, 150, 255, 0.3);
-  color: white;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(20px);
+  box-shadow: var(--box-shadow);
+  color: var(--dark);
   padding: 4.5rem;
   width: 100%;
-  margin-top: 500px;
 }
 .matches_button_container button {
-  background-color: #00a343;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--azul);
+  color: white;
   padding: 1rem 5.1rem;
-  border: none;
+  width: 17.2rem;
+  height: 2.9rem;
+  border: var(--border-dark);
+  box-shadow: var(--box-shadow-small);
   border-radius: 1rem;
   font-weight: 700;
   text-shadow: var(--text-shadow);
@@ -26,10 +31,11 @@
 .match_iconName_container {
   display: flex;
   gap: 0.3rem;
-  background-color: #151b2d;
+  background-color: var(--branco-f6);
   padding: 0.5rem 1.4rem;
   border-radius: 1rem;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: var(--box-shadow-small);
+   border: var(--border-dark);
 }
 .match_icons {
   font-size: 1.5rem;
@@ -49,8 +55,7 @@
 .team_name {
   text-align: center;
   font-size: 1.3rem;
-  font-weight: 600;
-  color: white;
+  font-weight: 700;
 }
 .match_container {
   display: flex;
@@ -70,9 +75,11 @@
 .ft_input {
   outline: none;
   border-radius: 0.5rem;
-  background-color: #151b2d;
+  background-color: var(--branco-f6);
   color: white;
   border: none;
+  box-shadow: var(--box-shadow-small);
+   border: var(--border-dark);
   font-weight: 700;
 }
 .ht_input {
