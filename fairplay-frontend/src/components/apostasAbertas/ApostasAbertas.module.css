@@ -1,0 +1,69 @@
+.apostasAbertas_container {
+  background-color: var(--branco-f6);
+  border: var(--border-dark);
+  box-shadow: var(--box-shadow);
+  padding: 2rem;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 1.8rem;
+  flex: 1;
+}
+.apostaAberta_scroll {
+  display: flex;
+  font-size: 0.8rem;
+  flex-direction: column;
+  gap: 1.2rem;
+  overflow-y: auto;
+  max-height: 23.965rem;
+}
+.apostaAberta_content {
+  box-shadow: var(--box-shadow-small);
+  border: var(--border-dark);
+  border-radius: 1rem;
+  padding: 0.7rem 1.3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.apostaAberta_status h5 {
+  font-size: 1rem;
+}
+.apostaAberta_status p{
+    font-size: .8rem;
+    color:#71aa80;
+    font-weight: 700;
+}
+.apostaAberta_status,
+.apostaAberta_retorno {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.apostaAberta_retorno {
+  gap: 1rem;
+}
+
+.apostaAberta_buttons {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+.apostaAberta_buttons button {
+  border: var(--border-dark);
+  box-shadow: var(--box-shadow-small);
+  color: white;
+  border-radius: 0.3rem;
+  width: 5.984rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  height: 1.5rem;
+  cursor: pointer;
+}
+.btn_green {
+  background-color: #71aa80;
+}
+.btn_red {
+  background-color: #e52121;
+}

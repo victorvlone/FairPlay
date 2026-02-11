@@ -1,0 +1,76 @@
+.caderneta_container {
+  background-color: #f4f4f4;
+  border-radius: 15px;
+  padding: 2rem;
+  flex: 1;
+  border: var(--border-dark);
+      box-shadow: var(--box-shadow);
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+.caderneta_betsSelects{
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+    width: 100%;
+}
+.caderneta_betSelect {
+    border-radius: 1rem;
+    border: var(--border-dark);
+    box-shadow: var(--box-shadow-small);
+    padding: .7rem 1.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.caderneta_bet_inputs{
+    display: flex;
+    justify-content: space-between;
+}
+.caderneta_select_input{
+    display: flex;
+    gap: .4rem;
+
+}
+.caderneta_select_input input, select{
+    color: white;
+    background-color: var(--dark);
+    border: none;
+    border-radius: 1rem;
+}
+.caderneta_select_input input{
+    width: 3.5rem;
+}
+.caderneta_select_input select{
+    width: max-content;
+}
+.caderneta_button_container{
+    background-color: var(--azul);
+    display: flex;
+    justify-content: space-between;
+    padding: .7rem 1.5rem;
+    border-radius: 1rem;
+    border: var(--border-dark);
+    box-shadow: var(--box-shadow-small);
+    color: white;
+    align-items: center;
+    width: 100%;
+}
+.caderneta_button_container button{
+    background-color: white;
+    box-shadow: var(--box-shadow-small);
+    border: var(--border-dark);
+    width: 8rem;
+    height: 2.1rem;
+    border-radius: .5rem;
+    font-weight: 600;
+    font-size: .8rem;
+    transition: color .3s ease-in-out;
+
+}
+.caderneta_button_container button:hover{
+    color: var(--azul);
+}

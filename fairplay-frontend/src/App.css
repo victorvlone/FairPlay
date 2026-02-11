@@ -27,6 +27,12 @@
   flex-direction: column;
   gap: 10px;
 }
+.apostas_caderneta_abertas{
+  display: flex;
+  gap: 2rem; /* Espaço entre a Caderneta e as Apostas Abertas */
+  align-items: stretch; /* Faz os dois terem a mesma altura se um for maior */
+  width: 100%;
+}
 .sm-12 {
   grid-column: 1 / -1;
 }

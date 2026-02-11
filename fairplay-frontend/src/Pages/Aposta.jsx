@@ -1,3 +1,6 @@
+import ApostasAbertas from "../components/apostasAbertas/ApostasAbertas";
+import ApostasCaderneta from "../components/apostasCaderneta/ApostasCaderneta";
+import ApostasTable from "../components/apostasTable/ApostasTable";
 import HeroPages from "../components/heroPages/HeroPages";
 import TeamPerformanceCard from "../components/teamPerformanceCard/TeamPerformanceCard";
 
@@ -19,6 +22,12 @@ function Aposta() {
       />
       <div className="content-wrapper-center row">
         <TeamPerformanceCard className="sm-12 col-7" />
+        <ApostasTable className="sm-12 col-7" />
+
+        <div  className=" apostas_caderneta_abertas col-7">
+          <ApostasCaderneta />
+          <ApostasAbertas />
+        </div>
       </div>
     </>
   );
