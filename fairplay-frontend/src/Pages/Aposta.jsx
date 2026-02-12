@@ -1,3 +1,4 @@
+import { useState } from "react";
 import ApostasAbertas from "../components/apostasAbertas/ApostasAbertas";
 import ApostasCaderneta from "../components/apostasCaderneta/ApostasCaderneta";
 import ApostasTable from "../components/apostasTable/ApostasTable";
@@ -5,6 +6,13 @@ import HeroPages from "../components/heroPages/HeroPages";
 import TeamPerformanceCard from "../components/teamPerformanceCard/TeamPerformanceCard";
 
 function Aposta() {
+  const [listaDeJogos, setListaDeJogos] = useState([]);
+
+  const salvarNovoJogo = (jogoJson) => {
+    console.log("Recebi no Pai:", jogoJson);
+    setListaDeJogos([...listaDeJogos, jogoJson]);
+  };
+
   return (
     <>
       <HeroPages
@@ -21,10 +29,10 @@ function Aposta() {
         }
       />
       <div className="content-wrapper-center row">
-        <TeamPerformanceCard className="sm-12 col-7" />
+        <TeamPerformanceCard className="sm-12 col-7" onAdicionar={salvarNovoJogo} />
         <ApostasTable className="sm-12 col-7" />
 
-        <div  className=" apostas_caderneta_abertas col-7">
+        <div className=" apostas_caderneta_abertas col-7">
           <ApostasCaderneta />
           <ApostasAbertas />
         </div>

@@ -76,7 +76,7 @@
   outline: none;
   border-radius: 0.5rem;
   background-color: var(--branco-f6);
-  color: white;
+  color: var(--dark);
   border: none;
   box-shadow: var(--box-shadow-small);
    border: var(--border-dark);
@@ -113,7 +113,7 @@
   border: none;
   border-bottom: 1px solid var(--azul);
   outline: none;
-  color: white;
+  color: var(--dark);
   font-weight: 700;
   width: 10rem;
   padding-left: 0.5rem;
@@ -121,4 +121,18 @@
 .error_message {
   color: #ff3b3b;
   font-size: 1rem;
+}
+.teamPerformance_selects{
+  display: flex;
+  gap: 1rem;
+}
+.teamPerformance_selects select, .teamPerformance_selects input{
+  border: var(--border-dark);
+  box-shadow: var(--box-shadow-small);
+  background-color: var(--branco-f6);
+  color: var(--dark);
+  border-radius: 1rem;
+  padding: .4rem;
+  font-weight: 600;
+  font-size: 1.2rem;
 }
