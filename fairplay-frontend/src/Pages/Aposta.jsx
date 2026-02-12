@@ -30,7 +30,7 @@ function Aposta() {
       />
       <div className="content-wrapper-center row">
         <TeamPerformanceCard className="sm-12 col-7" onAdicionar={salvarNovoJogo} />
-        <ApostasTable className="sm-12 col-7" />
+        <ApostasTable className="sm-12 col-7" jogos={listaDeJogos} />
 
         <div className=" apostas_caderneta_abertas col-7">
           <ApostasCaderneta />

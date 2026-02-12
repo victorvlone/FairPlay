@@ -4,6 +4,9 @@
     border: var(--border-dark);
     border-radius: 1rem;
     padding: 4rem 1rem;
+    overflow-y: auto;
+    height: 33.8rem;
+    max-height: 33.8rem;
 }
 
 .table {
@@ -11,7 +14,6 @@
     border-collapse: separate; 
     border-spacing: 0 10px; 
     text-align: center;
-    max-height: 26rem;
 }
 
 .table tr td{
@@ -19,6 +21,7 @@
     box-shadow: var(--box-shadow-small);
     border-top: var(--border-dark);
     border-bottom: var(--border-dark);
+    font-weight: 600;
 }
 .table tr td:first-child {
     border-left: var(--border-dark);
@@ -27,4 +30,16 @@
 .table tr td:last-child {
     border-right: var(--border-dark);
     border-radius: 0 10px 10px 0; /* Arredonda o canto direito */
+}
+.apostasTable_icon{
+    font-size: 1.2rem
+}
+.green{
+    color: #6CCA55;
+}
+.red{
+    color: #E52121;
+}
+.yellow{
+    color: #B7BD0C;
 }
