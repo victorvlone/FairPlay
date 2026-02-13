@@ -28,6 +28,7 @@ function Autenticacao({ className, initialMode, onClose }) {
         senha: password 
       });
       localStorage.setItem("token", response.data.token);
+      localStorage.setItem("userId", response.data.userId);
       alert("Login realizado com sucesso!");
       onClose();
       window.location.reload();

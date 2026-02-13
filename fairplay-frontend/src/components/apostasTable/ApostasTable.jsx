@@ -2,9 +2,37 @@ import styles from "./ApostasTable.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSquarePlus, faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 
-function ApostasTable({ className, jogos }) {
+function ApostasTable({ className, jogos, onEnviarParaCaderneta }) {
+
+  const handleMandarProPai = (jogo) => {
+    const pOver15 = jogo.estatisticas.over15FT * 10;
+    const pOver25 = jogo.estatisticas.over25FT * 10;
+    const pBtts = jogo.estatisticas.btts * 10;
+    const pOver05HT = jogo.estatisticas.over05HT * 10;
+
+    const rec = calcularApostaRecomendada(pOver05HT, pOver15, pOver25, pBtts);
+
+    // Criamos o objeto "Turbinado"
+    const jogoProcessado = {
+      equipeCasa: jogo.equipes.casa,
+      equipeFora: jogo.equipes.fora,
+      porcentagens: {
+        over15: pOver15,
+        over25: pOver25,
+        btts: pBtts,
+        over05HT: pOver05HT,
+      },
+      recomendacao: rec,
+      filtros: jogo.filtros,
+      idOriginal: jogo.geradoEm,
+    };
+
+    if (onEnviarParaCaderneta) {
+      onEnviarParaCaderneta(jogoProcessado);
+    }
+  };
+
   const calcularApostaRecomendada = (over05HT, over15, over25, ambasMarcam) => {
-    // Se quiser manter os critérios de gols que você mandou:
     if (over25 >= 90 && ambasMarcam >= 80 && over05HT >= 90) {
       return "Ambas Marcam";
     }
@@ -15,13 +43,13 @@ function ApostasTable({ className, jogos }) {
       return "Over 2.5 Gols";
     }
 
-    return "—"; // Caso não atinja nenhum critério
+    return "—";
   };
 
   const getStyle = (valor) => {
-    if (valor > 70) return styles.green; // Acima de 70: Verde
-    if (valor === 70) return styles.yellow; // Exatamente 70: Amarelo
-    return styles.red; // Abaixo de 70: Vermelho
+    if (valor > 70) return styles.green;
+    if (valor === 70) return styles.yellow;
+    return styles.red;
   };
 
   return (
@@ -84,6 +112,7 @@ function ApostasTable({ className, jogos }) {
                     <FontAwesomeIcon
                       icon={faSquarePlus}
                       className={styles.apostasTable_icon}
+                      onClick={() => handleMandarProPai(jogo)}
                     />
                   </td>
                 </tr>

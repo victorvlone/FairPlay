@@ -3,6 +3,7 @@ package com.fairplay.fair.controller;
 import java.util.List;
 import java.util.UUID;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,8 +29,9 @@ public class BetController {
     }
 
     @PostMapping
-    public ResponseEntity<Bet> createBet(@RequestBody BetDTO dto) {
-        return ResponseEntity.status(201).body(betService.createBet(dto));
+    public ResponseEntity<Bet> create(@RequestBody BetDTO dto) {
+        Bet newBet = betService.createBet(dto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(newBet);
     }
 
     @GetMapping

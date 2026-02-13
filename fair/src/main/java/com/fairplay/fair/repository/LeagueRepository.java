@@ -10,7 +10,7 @@ import com.fairplay.fair.entities.League;
 public interface LeagueRepository extends JpaRepository<League, Long> {
     Optional<League> findByNameIgnoreCaseAndCountryId(String name, Long countryId);
     List<League> findByCountryNameIgnoreCase(String countryName);
-
+Optional<League> findByName(String name);
 
 
 }

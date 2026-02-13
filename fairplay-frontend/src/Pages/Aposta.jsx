@@ -7,11 +7,17 @@ import TeamPerformanceCard from "../components/teamPerformanceCard/TeamPerforman
 
 function Aposta() {
   const [listaDeJogos, setListaDeJogos] = useState([]);
+  const [caderneta, setCaderneta] = useState([]);
 
   const salvarNovoJogo = (jogoJson) => {
     console.log("Recebi no Pai:", jogoJson);
     setListaDeJogos([...listaDeJogos, jogoJson]);
   };
+
+  const adicionarACaderneta = (jogoFinal) => {
+  console.log("Adicionando à Caderneta:", jogoFinal);
+  setCaderneta([...caderneta, jogoFinal]);
+};
 
   return (
     <>
@@ -30,10 +36,10 @@ function Aposta() {
       />
       <div className="content-wrapper-center row">
         <TeamPerformanceCard className="sm-12 col-7" onAdicionar={salvarNovoJogo} />
-        <ApostasTable className="sm-12 col-7" jogos={listaDeJogos} />
+        <ApostasTable className="sm-12 col-7" jogos={listaDeJogos} onEnviarParaCaderneta={adicionarACaderneta} />
 
         <div className=" apostas_caderneta_abertas col-7">
-          <ApostasCaderneta />
+          <ApostasCaderneta caderneta={caderneta} />
           <ApostasAbertas />
         </div>
       </div>

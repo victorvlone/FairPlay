@@ -5,6 +5,7 @@ import java.util.List;
 import com.fairplay.fair.entities.enums.Status;
 import com.fairplay.fair.entities.enums.Types;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -48,7 +49,7 @@ public class Bet {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "bet_matches", joinColumns = @JoinColumn(name = "bet_id"), inverseJoinColumns = @JoinColumn(name = "match_id"))
     private List<Match> matches;
 
