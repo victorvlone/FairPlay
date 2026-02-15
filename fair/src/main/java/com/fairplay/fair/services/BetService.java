@@ -13,6 +13,8 @@ import com.fairplay.fair.entities.League;
 import com.fairplay.fair.entities.Match;
 import com.fairplay.fair.entities.Team;
 import com.fairplay.fair.entities.User;
+import com.fairplay.fair.entities.enums.Result;
+import com.fairplay.fair.entities.enums.Status;
 import com.fairplay.fair.repository.BetRepository;
 import com.fairplay.fair.repository.CountryRepository;
 import com.fairplay.fair.repository.LeagueRepository;
@@ -124,13 +126,27 @@ public class BetService {
         return betRepository.findByUserId(userId);
     }
 
+    @Transactional
     public Bet updateBet(Long id, BetDTO dto) {
+        Bet bet = betRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Aposta não encontrada"));
 
-        Bet bet = getBetById(id);
-
-        bet.setOddTotal(dto.oddTotal());
-        bet.setType(dto.type());
+        // Atualiza os dados da aposta
         bet.setStatus(dto.status());
+        bet.setActualReturn(dto.actualReturn());
+
+        // SE a aposta está sendo finalizada, atualizamos as partidas vinculadas
+        if (bet.getStatus() == Status.FINALIZADA) {
+            // Determinamos o resultado baseado no retorno (ou enviamos um campo extra no
+            // DTO)
+            Result matchResult = (bet.getActualReturn() > 0) ? Result.GREEN : Result.RED;
+
+            for (Match match : bet.getMatches()) {
+                match.setResult(matchResult);
+                // matchRepository.save(match); // O @Transactional já cuida disso, mas pode
+                // colocar se preferir
+            }
+        }
 
         return betRepository.save(bet);
     }

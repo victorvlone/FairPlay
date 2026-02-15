@@ -12,11 +12,13 @@
 }
 .apostaAberta_scroll {
   display: flex;
-  font-size: 0.8rem;
+  font-size: 1rem;
   flex-direction: column;
   gap: 1.2rem;
   overflow-y: auto;
   max-height: 23.965rem;
+  height: 100%;
+  width: 100%;
 }
 .apostaAberta_content {
   box-shadow: var(--box-shadow-small);
@@ -28,10 +30,10 @@
   gap: 0.3rem;
 }
 .apostaAberta_status h5 {
-  font-size: 1rem;
+  font-size: 1.2rem;
 }
 .apostaAberta_status p{
-    font-size: .8rem;
+    font-size: 1rem;
     color:#71aa80;
     font-weight: 700;
 }
@@ -44,7 +46,15 @@
 .apostaAberta_retorno {
   gap: 1rem;
 }
-
+.apostaAberta_retorno input {
+  width: 100%;
+  min-width: 0;
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.4rem;
+  border: 1px solid var(--dark);
+  height: 1.7rem;      /* Alinhado com a altura dos seus botões */
+  font-size: 1rem;
+}
 .apostaAberta_buttons {
   display: flex;
   align-items: center;

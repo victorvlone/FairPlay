@@ -10,17 +10,42 @@ function TeamPerformanceCard({ className, onAdicionar }) {
   const [selectedLeague, setSelectedLeague] = useState("");
   const [loadingLeagues, setLoadingLeagues] = useState(false);
 
+  const limparCampos = () => {
+    // 1. Limpa todos os inputs de texto e número (times, gols HT e FT)
+    const inputs = document.querySelectorAll('input');
+    inputs.forEach(input => {
+      // Se for do tipo date, talvez você queira manter ou limpar
+      if (input.type === 'date') {
+        input.value = ""; 
+      } else {
+        input.value = "";
+      }
+    });
+
+    // 2. Limpa os estados do React (País e Liga)
+    setSelectedCountry("");
+    setSelectedLeague("");
+    setLeagues([]); // Limpa a lista de ligas para o próximo país
+
+    // 3. Resetar os selects que não são controlados por estado se houver
+    const selects = document.querySelectorAll('select');
+    selects.forEach(select => {
+      select.value = "";
+    });
+  };
+  
+
   const handleBotaoAdicionar = () => {
     const dados = coletarDados();
-    
-    // Validação simples antes de enviar
+
     if (!dados.equipes.casa || !dados.equipes.fora) {
       alert("Preencha os nomes dos times!");
       return;
     }
 
     if (onAdicionar) {
-      onAdicionar(dados); // Aqui os dados "sobem" para o pai
+      onAdicionar(dados);
+      limparCampos();
     }
   };
 
@@ -676,7 +701,7 @@ function TeamPerformanceCard({ className, onAdicionar }) {
         <select
           name="comp."
           id="comp."
-          defaultValue={selectedLeague}
+          value={selectedLeague}
           onChange={(e) => setSelectedLeague(e.target.value)}
           disabled={!selectedCountry || loadingLeagues}
         >

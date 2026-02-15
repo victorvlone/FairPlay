@@ -2,8 +2,7 @@ import styles from "./ApostasTable.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSquarePlus, faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 
-function ApostasTable({ className, jogos, onEnviarParaCaderneta }) {
-
+function ApostasTable({ className, jogos, onEnviarParaCaderneta, onRemoverAnalise }) {
   const handleMandarProPai = (jogo) => {
     const pOver15 = jogo.estatisticas.over15FT * 10;
     const pOver25 = jogo.estatisticas.over25FT * 10;
@@ -37,10 +36,10 @@ function ApostasTable({ className, jogos, onEnviarParaCaderneta }) {
       return "Ambas Marcam";
     }
     if (over15 >= 90 && ambasMarcam >= 70 && over05HT >= 80 && over25 >= 70) {
-      return "Over 1.5 Gols";
+      return "Over 1.5";
     }
     if (over05HT >= 80 && over25 >= 80 && ambasMarcam >= 80) {
-      return "Over 2.5 Gols";
+      return "Over 2.5";
     }
 
     return "—";
@@ -69,16 +68,33 @@ function ApostasTable({ className, jogos, onEnviarParaCaderneta }) {
           {jogos.length === 0 ? (
             <tr>
               <td colSpan="6" style={{ textAlign: "center", padding: "20px" }}>
-                Nenhuma análise adicionada.
+                Nenhuma análise encontrada.
               </td>
             </tr>
           ) : (
             jogos.map((jogo, index) => {
-              // Convertendo contagem para porcentagem
-              const pOver15 = jogo.estatisticas.over15FT * 10;
-              const pOver25 = jogo.estatisticas.over25FT * 10;
-              const pBtts = jogo.estatisticas.btts * 10;
-              const pOver05HT = jogo.estatisticas.over05HT * 10;
+              const rowKey = jogo.isPersisted ? `db-${jogo.id}` : `local-${index}-${jogo.equipes.casa}`;
+              const nomeCasa = jogo.isPersisted
+                ? jogo.homeTeam?.name
+                : jogo.equipes?.casa;
+              const nomeFora = jogo.isPersisted
+                ? jogo.awayTeam?.name
+                : jogo.equipes?.fora;
+              const pOver15 = jogo.isPersisted
+                ? jogo.over15
+                : jogo.estatisticas?.over15FT * 10;
+
+              const pOver25 = jogo.isPersisted
+                ? jogo.over25
+                : jogo.estatisticas?.over25FT * 10;
+
+              const pBtts = jogo.isPersisted
+                ? jogo.btts
+                : jogo.estatisticas?.btts * 10;
+
+              const pOver05HT = jogo.isPersisted
+                ? jogo.over05Ht // Note o 't' minúsculo conforme sua Entity!
+                : jogo.estatisticas?.over05HT * 10;
 
               const recomendacao = calcularApostaRecomendada(
                 pOver05HT,
@@ -88,10 +104,9 @@ function ApostasTable({ className, jogos, onEnviarParaCaderneta }) {
               );
 
               return (
-                <tr key={index}>
+                <tr key={rowKey} className={jogo.isPersisted ? styles.row_db : ""}>
                   <td className={styles.team_cell}>
-                    {`${jogo.equipes.casa} x ${jogo.equipes.fora}`}
-                    <br />
+                    {`${nomeCasa} x ${nomeFora}`}
                   </td>
                   <td className={getStyle(pOver15)}>{pOver15}%</td>
                   <td className={getStyle(pOver25)}>{pOver25}%</td>
@@ -105,15 +120,21 @@ function ApostasTable({ className, jogos, onEnviarParaCaderneta }) {
                     {recomendacao}
                   </td>
                   <td>
-                    <FontAwesomeIcon
-                      icon={faCircleXmark}
-                      className={styles.apostasTable_icon}
-                    />
-                    <FontAwesomeIcon
-                      icon={faSquarePlus}
-                      className={styles.apostasTable_icon}
-                      onClick={() => handleMandarProPai(jogo)}
-                    />
+                    {/* SÓ MOSTRA OS ÍCONES SE O JOGO NÃO ESTIVER NO BANCO */}
+                    {!jogo.isPersisted && (
+                      <>
+                        <FontAwesomeIcon
+                          icon={faCircleXmark}
+                          className={styles.apostasTable_icon}
+                          onClick={() => onRemoverAnalise(index)}
+                        />
+                        <FontAwesomeIcon
+                          icon={faSquarePlus}
+                          className={styles.apostasTable_icon}
+                          onClick={() => handleMandarProPai(jogo)}
+                        />
+                      </>
+                    )}
                   </td>
                 </tr>
               );

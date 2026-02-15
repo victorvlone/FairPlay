@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import styles from "./ApostasCaderneta.module.css";
+import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-function ApostasCaderneta({ className, caderneta }) {
+function ApostasCaderneta({ className, caderneta, onRemover }) {
   const [oddsValores, setOddsValores] = useState({});
   const [oddTotal, setOddTotal] = useState(1.0);
 
@@ -14,7 +16,7 @@ function ApostasCaderneta({ className, caderneta }) {
       if (!isNaN(valor) && valor > 0) {
         total *= valor;
         temConteudo = true;
-      }
+      } 
     });
 
     setOddTotal(temConteudo ? total.toFixed(2) : (1.0).toFixed(2));
@@ -138,7 +140,11 @@ function ApostasCaderneta({ className, caderneta }) {
               <h4>
                 {item.equipeCasa} x {item.equipeFora}
               </h4>
-
+              <FontAwesomeIcon 
+                  icon={faCircleXmark} 
+                  className={styles.remover_icon} 
+                  onClick={() => onRemover(index)}
+                />
               <div className={styles.caderneta_bet_inputs}>
                 <div className={styles.caderneta_select_input}>
                   <label>Aposta:</label>

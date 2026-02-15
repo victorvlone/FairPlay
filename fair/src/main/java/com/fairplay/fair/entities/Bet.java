@@ -45,6 +45,15 @@ public class Bet {
     @Column(nullable = false, length = 30)
     private Status status;
 
+    @Column(nullable = false)
+    private double betValue;
+
+    @Column(nullable = false)
+    private double potentialReturn;
+
+    @Column(name = "actual_return", nullable = true)
+    private Double actualReturn;
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;

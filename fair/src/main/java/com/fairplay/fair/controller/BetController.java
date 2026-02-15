@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fairplay.fair.DTO.BetDTO;
 import com.fairplay.fair.entities.Bet;
+import com.fairplay.fair.entities.User;
 import com.fairplay.fair.services.BetService;
 
 @RestController
@@ -34,19 +36,15 @@ public class BetController {
         return ResponseEntity.status(HttpStatus.CREATED).body(newBet);
     }
 
-    @GetMapping
-    public ResponseEntity<List<Bet>> getAll() {
-        return ResponseEntity.ok(betService.getAllBets());
-    }
-
     @GetMapping("/{id}")
     public ResponseEntity<Bet> getById(@PathVariable Long id) {
         return ResponseEntity.ok(betService.getBetById(id));
     }
 
-    @GetMapping("/user/{userId}")
-    public ResponseEntity<List<Bet>> getByUser(@PathVariable UUID userId) {
-        return ResponseEntity.ok(betService.getBetsByUser(userId));
+    @GetMapping
+    public ResponseEntity<List<Bet>> getMyBets(@AuthenticationPrincipal User user) {
+        List<Bet> minhasBets = betService.getBetsByUser(user.getId());
+        return ResponseEntity.ok(minhasBets);
     }
 
     @PutMapping("/{id}")
