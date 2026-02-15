@@ -13,6 +13,10 @@ function ApostasAbertas() {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await response.json();
+
+      console.log("CONTEÚDO DO ARRAY BETS:", data); // <--- ADICIONE ISSO
+      console.log("QUANTIDADE DE APOSTAS:", data.length);
+
       setBets(data);
     } catch (error) {
       console.error("Erro ao buscar apostas:", error);
@@ -86,12 +90,16 @@ function ApostasAbertas() {
 
               {bet.status === "EM_ABERTO" ? (
                 <div className={styles.apostaAberta_retorno}>
+                  <div className={styles.apostaAberta_retorno_input}>
+
+                  <label htmlFor="retorno">Retorno:</label>
                   <input
                     type="number"
-                    placeholder="R$ 0,00"
+                    placeholder="0,00"
                     value={valoresRetorno[bet.id] || ""}
                     onChange={(e) => handleInputChange(bet.id, e.target.value)}
                   />
+                  </div>
                   <div className={styles.apostaAberta_buttons}>
                     <button className={styles.btn_green} onClick={() => finalizarAposta(bet.id, "GREEN")}>Green</button>
                     <button className={styles.btn_red} onClick={() => finalizarAposta(bet.id, "RED")}>Red</button>

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.fairplay.fair.DTO.BetDTO;
+import com.fairplay.fair.entities.BankrollHistory;
 import com.fairplay.fair.entities.Bet;
 import com.fairplay.fair.entities.Country;
 import com.fairplay.fair.entities.League;
@@ -15,6 +16,7 @@ import com.fairplay.fair.entities.Team;
 import com.fairplay.fair.entities.User;
 import com.fairplay.fair.entities.enums.Result;
 import com.fairplay.fair.entities.enums.Status;
+import com.fairplay.fair.repository.BankrollHistoryRepository;
 import com.fairplay.fair.repository.BetRepository;
 import com.fairplay.fair.repository.CountryRepository;
 import com.fairplay.fair.repository.LeagueRepository;
@@ -45,6 +47,9 @@ public class BetService {
     @Autowired
     private CountryRepository countryRepository;
 
+    @Autowired
+    private BankrollHistoryRepository bankrollHistoryRepository;
+
     @Transactional
     public Bet createBet(BetDTO dto) {
         User user = userRepository.findById(dto.userId())
@@ -71,6 +76,8 @@ public class BetService {
         bet.setOddTotal(dto.oddTotal());
         bet.setType(dto.type());
         bet.setStatus(dto.status());
+        bet.setBetValue(dto.betValue());
+        bet.setPotentialReturn(dto.potentialReturn());
         bet.setUser(user);
         bet.setMatches(matches);
 
@@ -131,21 +138,47 @@ public class BetService {
         Bet bet = betRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Aposta não encontrada"));
 
-        // Atualiza os dados da aposta
         bet.setStatus(dto.status());
         bet.setActualReturn(dto.actualReturn());
 
-        // SE a aposta está sendo finalizada, atualizamos as partidas vinculadas
         if (bet.getStatus() == Status.FINALIZADA) {
-            // Determinamos o resultado baseado no retorno (ou enviamos um campo extra no
-            // DTO)
+            // 1. Atualiza as Matches (o que já tínhamos)
             Result matchResult = (bet.getActualReturn() > 0) ? Result.GREEN : Result.RED;
-
             for (Match match : bet.getMatches()) {
                 match.setResult(matchResult);
-                // matchRepository.save(match); // O @Transactional já cuida disso, mas pode
-                // colocar se preferir
             }
+
+            // 2. Lógica Financeira do Usuário
+            User user = bet.getUser();
+            double lucroLiquido = bet.getActualReturn() - bet.getBetValue();
+
+            user.setRealProfit(user.getRealProfit() + lucroLiquido);
+            user.setFinalBankroll(user.getInitialBankroll() + user.getRealProfit());
+
+            // 3. Regra dos 10%: Checar se fechamos o mês
+            double meta = user.getInitialBankroll() * 0.10;
+
+            if (user.getRealProfit() >= meta) {
+                // "Tiramos a foto" para a tabela de histórico
+                BankrollHistory history = new BankrollHistory();
+                history.setUser(user);
+                history.setMonth(user.getMonth());
+                history.setInitialBankroll(user.getInitialBankroll());
+                history.setRealProfit(user.getRealProfit());
+                history.setFinalBankroll(user.getFinalBankroll());
+
+                bankrollHistoryRepository.save(history); // Salvou o mês passado!
+
+                // Reset para o próximo mês + Aporte de R$ 100
+                user.setMonth(user.getMonth() + 1);
+                double novaBancaComAporte = user.getFinalBankroll() + 100.0;
+
+                user.setInitialBankroll(novaBancaComAporte);
+                user.setRealProfit(0.0); // Zera o lucro para a nova meta de 10%
+                user.setFinalBankroll(novaBancaComAporte);
+            }
+
+            userRepository.save(user); // Atualiza o estado vivo do usuário
         }
 
         return betRepository.save(bet);

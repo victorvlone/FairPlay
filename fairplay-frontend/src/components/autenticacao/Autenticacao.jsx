@@ -29,6 +29,7 @@ function Autenticacao({ className, initialMode, onClose }) {
       });
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("userId", response.data.userId);
+      localStorage.setItem("userBankroll", response.data.initialBankroll);
       alert("Login realizado com sucesso!");
       onClose();
       window.location.reload();

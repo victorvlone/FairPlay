@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.fairplay.fair.entities.enums.Status;
 import com.fairplay.fair.entities.enums.Types;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -56,6 +57,7 @@ public class Bet {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @JsonIgnoreProperties({"bets", "password", "history"})
     private User user;
 
     @ManyToMany(cascade = CascadeType.ALL)

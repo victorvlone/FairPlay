@@ -9,6 +9,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.fairplay.fair.entities.enums.UserRole;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -64,6 +65,10 @@ public class User implements UserDetails {
     private Double finalBankroll;
 
     @OneToMany(mappedBy = "user")
+    private List<BankrollHistory> history;
+
+    @OneToMany(mappedBy = "user")
+    @JsonIgnoreProperties("user")
     private List<Bet> bets;
 
     public User(String firstName, String lastName, String email, String password, UserRole role,

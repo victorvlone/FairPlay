@@ -35,11 +35,11 @@ function ApostasTable({ className, jogos, onEnviarParaCaderneta, onRemoverAnalis
     if (over25 >= 90 && ambasMarcam >= 80 && over05HT >= 90) {
       return "Ambas Marcam";
     }
-    if (over15 >= 90 && ambasMarcam >= 70 && over05HT >= 80 && over25 >= 70) {
-      return "Over 1.5";
-    }
     if (over05HT >= 80 && over25 >= 80 && ambasMarcam >= 80) {
       return "Over 2.5";
+    }
+    if (over15 >= 90 && ambasMarcam >= 70 && over05HT >= 80 && over25 >= 70) {
+      return "Over 1.5";
     }
 
     return "—";

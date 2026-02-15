@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 function ApostasCaderneta({ className, caderneta, onRemover }) {
   const [oddsValores, setOddsValores] = useState({});
   const [oddTotal, setOddTotal] = useState(1.0);
+  const [betValue, setBetValue] = useState("");
 
   useEffect(() => {
     let total = 1.0;
@@ -50,7 +51,11 @@ function ApostasCaderneta({ className, caderneta, onRemover }) {
 
   const handleSalvarAposta = async () => {
     const userId = localStorage.getItem("userId");
-    const token = localStorage.getItem("token"); // PEGA O TOKEN SALVO
+    const token = localStorage.getItem("token");
+    const bankroll = parseFloat(localStorage.getItem("userBankroll"));
+  
+    const valorDaStake = bankroll * 0.05; 
+    const retornoPotencial = valorDaStake * parseFloat(oddTotal);
 
     if (!userId || !token) {
       alert("Você precisa estar logado para salvar uma aposta.");
@@ -82,6 +87,8 @@ function ApostasCaderneta({ className, caderneta, onRemover }) {
     const payload = {
       userId: userId,
       oddTotal: parseFloat(oddTotal),
+      betValue: valorDaStake,           // <--- FALTAVA ISSO
+      potentialReturn: retornoPotencial,
       status: "EM_ABERTO",
       type: getTipoAposta(caderneta.length)
         .toUpperCase()

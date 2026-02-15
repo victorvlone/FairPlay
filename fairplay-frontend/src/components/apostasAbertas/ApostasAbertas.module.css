@@ -19,6 +19,23 @@
   max-height: 23.965rem;
   height: 100%;
   width: 100%;
+  padding-top: .7rem;
+    padding-bottom: 2rem;
+
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
 }
 .apostaAberta_content {
   box-shadow: var(--box-shadow-small);
@@ -45,15 +62,22 @@
 }
 .apostaAberta_retorno {
   gap: 1rem;
+  align-items: end;
 }
-.apostaAberta_retorno input {
+.apostaAberta_retorno_input {
+  display: flex;
+  flex-direction: column;
+}
+.apostaAberta_retorno_input input {
   width: 100%;
   min-width: 0;
+  background-color: var(--branco-f6);
   padding: 0.3rem 0.5rem;
   border-radius: 0.4rem;
   border: 1px solid var(--dark);
   height: 1.7rem;      /* Alinhado com a altura dos seus botões */
   font-size: 1rem;
+  box-shadow: var(--box-shadow-small);
 }
 .apostaAberta_buttons {
   display: flex;
