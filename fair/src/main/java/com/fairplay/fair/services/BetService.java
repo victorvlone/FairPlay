@@ -142,24 +142,32 @@ public class BetService {
         bet.setActualReturn(dto.actualReturn());
 
         if (bet.getStatus() == Status.FINALIZADA) {
-            // 1. Atualiza as Matches (o que já tínhamos)
-            Result matchResult = (bet.getActualReturn() > 0) ? Result.GREEN : Result.RED;
+            // --- INÍCIO DA MUDANÇA (Etapa 1) ---
             for (Match match : bet.getMatches()) {
-                match.setResult(matchResult);
+                // Se o Frontend enviou o status específico dessa partida no Map
+                if (dto.matchesStatus() != null && dto.matchesStatus().containsKey(match.getId())) {
+                    String statusEnviado = dto.matchesStatus().get(match.getId()); // "GREEN" ou "RED"
+                    match.setResult(Result.valueOf(statusEnviado));
+                } else {
+                    // Caso o Map esteja vazio (ex: clique no botão "Tudo Green"),
+                    // usa a lógica baseada no retorno financeiro
+                    Result fallback = (bet.getActualReturn() > 0) ? Result.GREEN : Result.RED;
+                    match.setResult(fallback);
+                }
             }
+            // --- FIM DA MUDANÇA ---
 
-            // 2. Lógica Financeira do Usuário
+            // 2. Lógica Financeira do Usuário (Mantém igual, está correta!)
             User user = bet.getUser();
             double lucroLiquido = bet.getActualReturn() - bet.getBetValue();
 
             user.setRealProfit(user.getRealProfit() + lucroLiquido);
             user.setFinalBankroll(user.getInitialBankroll() + user.getRealProfit());
 
-            // 3. Regra dos 10%: Checar se fechamos o mês
+            // 3. Regra dos 10% (Mantém igual)
             double meta = user.getInitialBankroll() * 0.10;
 
             if (user.getRealProfit() >= meta) {
-                // "Tiramos a foto" para a tabela de histórico
                 BankrollHistory history = new BankrollHistory();
                 history.setUser(user);
                 history.setMonth(user.getMonth());
@@ -167,18 +175,17 @@ public class BetService {
                 history.setRealProfit(user.getRealProfit());
                 history.setFinalBankroll(user.getFinalBankroll());
 
-                bankrollHistoryRepository.save(history); // Salvou o mês passado!
+                bankrollHistoryRepository.save(history);
 
-                // Reset para o próximo mês + Aporte de R$ 100
                 user.setMonth(user.getMonth() + 1);
                 double novaBancaComAporte = user.getFinalBankroll() + 100.0;
 
                 user.setInitialBankroll(novaBancaComAporte);
-                user.setRealProfit(0.0); // Zera o lucro para a nova meta de 10%
+                user.setRealProfit(0.0);
                 user.setFinalBankroll(novaBancaComAporte);
             }
 
-            userRepository.save(user); // Atualiza o estado vivo do usuário
+            userRepository.save(user);
         }
 
         return betRepository.save(bet);

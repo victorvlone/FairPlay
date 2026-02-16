@@ -79,7 +79,7 @@
   font-size: 1rem;
   box-shadow: var(--box-shadow-small);
 }
-.apostaAberta_buttons {
+.apostaAberta_buttons{
   display: flex;
   align-items: center;
   gap: 0.2rem;
@@ -100,4 +100,42 @@
 }
 .btn_red {
   background-color: #e52121;
+}
+.apostaFechada_container{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.apostaFechada_content{
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.25);
+  width: 100%;
+
+}
+.apostaFechada_aposta{
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+}
+.apostaFechada_buttons{
+  display: flex;
+  gap: .5rem;
+}
+.apostaFechada_buttons button{
+  color: white;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.25);
+  border-radius: .5rem;
+  width: 2rem;
+  height: 2rem;
+}
+.btn_confirmar_finalizacao{
+  background-color: #e52121;
+  color: white;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.25);
+    font-weight: 600;
+    border-radius: .7rem;
+    padding: .5rem 1rem;
 }

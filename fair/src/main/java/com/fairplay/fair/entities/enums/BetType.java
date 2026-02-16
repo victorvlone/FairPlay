@@ -4,5 +4,6 @@ public enum BetType {
     OVER_15,
     OVER_25,
     OVER_05_HT,
+    UNDER_DEFINED,
     AMBAS_MARCAM;
 }
