@@ -3,7 +3,7 @@
   --azul: #0368ff;
   --dark: #191a23;
   --branco-f6: #f6f6f6;
-  --box-shadow: 0 5px 0 #191a23;
+  --box-shadow: 0 4px 10px rgba(25, 26, 35, 0.25);
   --box-shadow-small: 0 3px 0 #191a23;
   --border-dark: 1px solid var(--dark);
 }
@@ -113,6 +113,9 @@ td {
 @media (min-width: 1280px) {
   .col-7 {
     grid-column: span 7;
+  }
+    .col-4 {
+    grid-column: span 4;
   }
   .col-5 {
     grid-column: span 5;

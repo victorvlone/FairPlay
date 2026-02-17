@@ -1,0 +1,30 @@
+.evolucaoChart_container {
+    height: 34rem;
+    background-color: var(--branco-f6);
+    border-radius: 1rem;
+    box-shadow: var(--box-shadow);
+    display: flex;
+    align-items: center; /* Centraliza o gráfico verticalmente */
+    justify-content: center;
+    flex-direction: column;
+    padding: 1.5rem;
+    gap: 2rem;
+    box-sizing: border-box;
+}
+.evolucaoChart_title{
+    text-align: center;
+}
+.stop_top {
+    stop-color: var(--azul);
+    stop-opacity: 0.6;
+}
+
+.stop_bottom {
+    stop-color: var(--azul);
+    stop-opacity: 0.2;
+}
+
+.area_line {
+    stroke: var(--azul);
+    stroke-width: 3;
+}

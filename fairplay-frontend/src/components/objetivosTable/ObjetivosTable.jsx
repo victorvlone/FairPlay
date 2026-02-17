@@ -1,17 +1,23 @@
 import { useEffect, useState } from "react";
 import styles from "./ObjetivosTable.module.css";
 
-function ObjetivosTable({ className }) {
+function ObjetivosTable({ className, onDataGenerated }) {
   const [history, setHistory] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // Função para formatar os números: 15555.00 -> 15.555,00
   const formatCurrency = (value) => {
     return value.toLocaleString("pt-BR", {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
     });
   };
+
+  useEffect(() => {
+    const todasAsLinhas = gerarLinhasTabela();
+    if (todasAsLinhas.length > 0 && onDataGenerated) {
+      onDataGenerated(todasAsLinhas);
+    }
+  }, [history]);
 
   const fetchHistory = async () => {
     const userId = localStorage.getItem("userId");
@@ -36,10 +42,12 @@ function ObjetivosTable({ className }) {
     const TOTAL_MESES = 48;
     let linhasCompletas = [];
     
+    // 1. Dados Reais do Banco
     history.forEach((item, index) => {
       const initial = index === 0 ? item.initialBankroll : linhasCompletas[index - 1].final;
       const deposit = item.month === 1 ? 0 : 100;
       const operacional = initial + deposit;
+      const metaCalculada = operacional * 0.10; // A meta que deveria ter sido batida
       
       linhasCompletas.push({
         id: item.id,
@@ -47,12 +55,14 @@ function ObjetivosTable({ className }) {
         initial: initial,
         deposit: deposit,
         operacional: operacional,
-        profit: item.realProfit,
+        profit: item.realProfit, // Lucro que REALMENTE aconteceu
+        meta: metaCalculada,    // Meta que era o OBJETIVO
         final: item.finalBankroll,
         isReal: true
       });
     });
 
+    // 2. Projeção para o Futuro
     const ultimoMesReal = history[history.length - 1].month;
     for (let m = ultimoMesReal + 1; m <= TOTAL_MESES; m++) {
       const lastItem = linhasCompletas[linhasCompletas.length - 1];
@@ -68,7 +78,8 @@ function ObjetivosTable({ className }) {
         initial: initial,
         deposit: deposit,
         operacional: operacional,
-        profit: projectedProfit,
+        profit: projectedProfit, // Na projeção, lucro e meta são iguais
+        meta: projectedProfit,
         final: final,
         isReal: false
       });
