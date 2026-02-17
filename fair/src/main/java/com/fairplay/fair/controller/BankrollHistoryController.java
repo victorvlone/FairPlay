@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.fairplay.fair.DTO.BankrollHistoryDTO;
+import com.fairplay.fair.DTO.BankrollHistoryResponseDTO;
 import com.fairplay.fair.entities.BankrollHistory;
 import com.fairplay.fair.services.BankrollHistoryService;
 
@@ -53,8 +54,8 @@ public class BankrollHistoryController {
     }
 
     @GetMapping("/{userId}")
-    public ResponseEntity<List<BankrollHistory>> getAllMonths(@PathVariable UUID userId) {
-        List<BankrollHistory> histories = bankrollHistoryService.getAllMonths(userId);
+    public ResponseEntity<List<BankrollHistoryResponseDTO>> getAllMonths(@PathVariable UUID userId) {
+        List<BankrollHistoryResponseDTO> histories = bankrollHistoryService.getAllMonths(userId);
         return ResponseEntity.ok(histories);
     }
 }

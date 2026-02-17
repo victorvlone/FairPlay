@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.fairplay.fair.DTO.BankrollHistoryDTO;
+import com.fairplay.fair.DTO.BankrollHistoryResponseDTO;
 import com.fairplay.fair.entities.BankrollHistory;
 import com.fairplay.fair.entities.User;
 import com.fairplay.fair.repository.BankrollHistoryRepository;
@@ -79,15 +80,17 @@ public class BankrollHistoryService {
         bankrollHistoryRepository.delete(history);
     }
 
-    public List<BankrollHistory> getAllMonths(UUID userId) {
-    User user = userRepository.findById(userId)
-            .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+    public List<BankrollHistoryResponseDTO> getAllMonths(UUID userId) {
+        List<BankrollHistory> histories = bankrollHistoryRepository.findByUserIdOrderByMonthAsc(userId);
 
-    return bankrollHistoryRepository.findAll().stream()
-            .filter(b -> b.getUser().getId().equals(userId))
-            .sorted(Comparator.comparing(BankrollHistory::getMonth))
-            .toList();
-}
-
+        return histories.stream()
+                .map(h -> new BankrollHistoryResponseDTO(
+                        h.getId(),
+                        h.getMonth(),
+                        h.getInitialBankroll(),
+                        h.getRealProfit(),
+                        h.getFinalBankroll()))
+                .toList();
+    }
 
 }

@@ -44,6 +44,7 @@
   background-color: #f6f6f6;
   max-height: 60rem;
   height: 40rem;
+  padding: 9rem 2.6rem 2.6rem 2.6rem;
   overflow-y: auto;
   &::-webkit-scrollbar {
     display: none;
@@ -54,15 +55,14 @@
 .custom_table {
   width: 100%;
   border-collapse: separate;
-  border-spacing: 15px 14px;
+  border-spacing: 0 8px;
   border: none;
   font-weight: 700;
   font-size: 1rem;
   table-layout: fixed;
   border-spacing: 0 14px;
-  margin-top: -14px;
 }
-.custom_table th,
+.custom_table
 td {
   padding: 8px 0;
 }
@@ -73,8 +73,8 @@ td {
   border-radius: 0 1rem 0 0;
 }
 .custom_table thead {
-  background: var(--azul);
-  color: white;
+
+  color: var(--dark);
 }
 .custom_table tbody {
   background-color: transparent;
@@ -119,6 +119,9 @@ td {
   }
   .col-6 {
     grid-column: span 6;
+  }
+    .col-8 {
+    grid-column: span 8;
   }
   .col-end-6 {
     grid-column: 7 / -1;

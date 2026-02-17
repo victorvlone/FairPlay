@@ -10,7 +10,7 @@ function DesempenhoTable({ className }) {
         <button>Aposta</button>
       </div>
       <div className="table_container">
-      <table className={`custom_table ${styles.DesempenhoTable_container}`}>
+        <table className={`custom_table ${styles.DesempenhoTable_container}`}>
           <thead>
             <tr>
               <th>Time</th>
