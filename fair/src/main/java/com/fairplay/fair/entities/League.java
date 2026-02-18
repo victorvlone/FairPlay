@@ -6,6 +6,7 @@ import lombok.*;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Getter
 @Setter
@@ -24,7 +25,7 @@ public class League {
 
     @ManyToOne
     @JoinColumn(name = "country_id")
-    @JsonBackReference
+    @JsonIgnoreProperties("leagues")
     private Country country;
 
     @OneToMany(mappedBy = "league")

@@ -2,6 +2,7 @@ package com.fairplay.fair.entities;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Column;
@@ -32,7 +33,7 @@ public class Country {
     private String name;
 
     @OneToMany(mappedBy = "country")
-    @JsonManagedReference
+    @JsonIgnoreProperties("country")
     private List<League> leagues;
 
 }

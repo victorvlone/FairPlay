@@ -18,6 +18,8 @@ function Objetivos() {
           </>
         }
       />
+      <h2>Evolução da Banca</h2>
+      <p>Acompanhe seu progresso mensal e a regra dos 10% de meta.</p>
       <div className="content-wrapper-center row row_align_top">
         <ObjetivosTable className="sm-12 col-8" onDataGenerated={setChartData} />
         <EvolucaoChart className="sm-12 col-4" data={chartData} />

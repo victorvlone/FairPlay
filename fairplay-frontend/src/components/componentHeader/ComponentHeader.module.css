@@ -1,0 +1,10 @@
+.componentHeader_container{
+    text-align: center;
+    padding-bottom: 3rem;
+}
+.componentHeader_container h2{
+    font-size: 3.2rem;
+}
+.componentHeader_container p{
+    font-size: 1.6rem;
+}
