@@ -2,6 +2,7 @@ import { useState } from "react";
 import EvolucaoChart from "../components/evolucaoChart/EvolucaoChart";
 import HeroPages from "../components/heroPages/HeroPages";
 import ObjetivosTable from "../components/objetivosTable/ObjetivosTable";
+import ComponentHeader from "../components/componentHeader/ComponentHeader";
 
 function Objetivos() {
   const [chartData, setChartData] = useState([]);
@@ -18,9 +19,8 @@ function Objetivos() {
           </>
         }
       />
-      <h2>Evolução da Banca</h2>
-      <p>Acompanhe seu progresso mensal e a regra dos 10% de meta.</p>
       <div className="content-wrapper-center row row_align_top">
+        <ComponentHeader titulo="Evolução da Banca" descricao="Acompanhe seu progresso mensal e a regra dos 10% de meta." className="col-12" />
         <ObjetivosTable className="sm-12 col-8" onDataGenerated={setChartData} />
         <EvolucaoChart className="sm-12 col-4" data={chartData} />
       </div>

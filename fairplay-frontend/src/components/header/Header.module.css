@@ -39,7 +39,7 @@
   box-shadow: 0 0px 6px var(--azul);
 }
 .header_nav_buttons button:nth-child(2) {
-  color: white;
+  color: var(--dark);
   transition: color 0.2s ease-in-out;
 }
 .header_nav_buttons button:nth-child(2):hover {
@@ -89,6 +89,20 @@
     display: none;
   }
   .icon_user {
-    font-size: 3rem;
+    font-size: 4rem;
+  }
+  .header_nav_login {
+    display: flex;
+    gap: 1rem;
+    text-align: end;
+    align-items: center;
+  }
+  .header_nav_login_data h5 {
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+  .header_nav_login_data h6 {
+    font-size: 1.3rem;
+    font-weight: 600;
   }
 }

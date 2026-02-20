@@ -17,15 +17,6 @@ function Home({ authConfig, closeAuth }) {
           </>
         }
       />
-      <div className="content-wrapper-center row row_align_top">
-        {authConfig.isOpen && (
-          <Autenticacao
-            className="sm-12 col-start-8"
-            initialMode={authConfig.mode}
-            onClose={closeAuth}
-          />
-        )}
-      </div>
     </>
   );
 }

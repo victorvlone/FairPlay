@@ -53,7 +53,7 @@ function ApostasTable({ className, jogos, onEnviarParaCaderneta, onRemoverAnalis
 
   return (
     <div className={`${styles.table_container} ${className}`}>
-      <table className={styles.table}>
+      <table className="custom_table">
         <thead>
           <tr>
             <th>Jogo</th>

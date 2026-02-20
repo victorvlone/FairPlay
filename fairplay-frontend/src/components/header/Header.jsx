@@ -3,9 +3,28 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleUser } from "@fortawesome/free-solid-svg-icons";
 import styles from "./Header.module.css";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 function Header({ onOpenAuth }) {
   const token = localStorage.getItem("token");
+  const [userData, setUserData] = useState({
+    nome: "Usuário",
+    banca: 0,
+  });
+
+  useEffect(() => {
+    if (token) {
+      // Pegamos os dados salvos no localStorage no momento do login
+      const nomeSalvo = localStorage.getItem("userName");
+      const bancaSalva = localStorage.getItem("userBankroll");
+
+      setUserData({
+        nome: nomeSalvo || "Usuário",
+        banca: bancaSalva ? parseFloat(bancaSalva) : 0,
+      });
+    }
+  }, [token]);
+
   return (
     <div className="content-wrapper-center">
       <header className={styles.header}>
@@ -37,10 +56,16 @@ function Header({ onOpenAuth }) {
                   <button onClick={() => onOpenAuth("login")}>Login</button>
                 </>
               ) : (
-                <FontAwesomeIcon
-                  icon={faCircleUser}
-                  className={styles.icon_user}
-                />
+                <div className={styles.header_nav_login}>
+                  <div className={styles.header_nav_login_data}>
+                    <h5>{userData.nome}</h5>
+                    <h6>R$ {userData.banca.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</h6>
+                  </div>
+                  <FontAwesomeIcon
+                    icon={faCircleUser}
+                    className={styles.icon_user}
+                  />
+                </div>
               )}
             </div>
           </div>

@@ -94,18 +94,18 @@ public class BetService {
     }
 
     private League findOrCreateLeague(String leagueName, String countryName) {
-        return leagueRepository.findByName(leagueName)
-                .orElseGet(() -> {
-                    League newLeague = new League();
-                    newLeague.setName(leagueName);
+        return leagueRepository.findByNameAndCountryName(leagueName, countryName)
+            .orElseGet(() -> {
+                League newLeague = new League();
+                newLeague.setName(leagueName);
 
-                    if (countryName != null && !countryName.isEmpty()) {
-                        Country country = findOrCreateCountry(countryName);
-                        newLeague.setCountry(country);
-                    }
+                if (countryName != null && !countryName.isEmpty()) {
+                    Country country = findOrCreateCountry(countryName);
+                    newLeague.setCountry(country);
+                }
 
-                    return leagueRepository.save(newLeague);
-                });
+                return leagueRepository.save(newLeague);
+            });
     }
 
     private Country findOrCreateCountry(String name) {

@@ -4,6 +4,7 @@ import ApostasCaderneta from "../components/apostasCaderneta/ApostasCaderneta";
 import ApostasTable from "../components/apostasTable/ApostasTable";
 import HeroPages from "../components/heroPages/HeroPages";
 import TeamPerformanceCard from "../components/teamPerformanceCard/TeamPerformanceCard";
+import ComponentHeader from "../components/componentHeader/ComponentHeader";
 
 function Aposta() {
   const [listaDeJogos, setListaDeJogos] = useState([]);
@@ -78,9 +79,19 @@ function Aposta() {
         }
       />
       <div className="content-wrapper-center row">
+        <ComponentHeader
+          titulo="Entrada de Dados"
+          descricao="Preencha os resultados recentes das equipes para gerar uma nova análise."
+          className="col-12"
+        />
         <TeamPerformanceCard
           className="sm-12 col-7"
           onAdicionar={salvarNovoJogo}
+        />
+        <ComponentHeader
+          titulo="Painel de Probabilidades"
+          descricao="Confira as métricas calculadas e a sugestão de mercado para cada confronto."
+          className="col-12"
         />
         <ApostasTable
           className="sm-12 col-7"
@@ -88,7 +99,11 @@ function Aposta() {
           onEnviarParaCaderneta={adicionarACaderneta}
           onRemoverAnalise={removerAnaliseDaTabela}
         />
-
+        <ComponentHeader
+          titulo="Gestão de Caderneta"
+          descricao="Monte suas múltiplas e gerencie o status de suas apostas ativas."
+          className="col-12"
+        />
         <div className=" apostas_caderneta_abertas col-7">
           <ApostasCaderneta
             caderneta={caderneta}

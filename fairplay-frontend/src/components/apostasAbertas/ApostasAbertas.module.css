@@ -9,6 +9,7 @@
   flex-direction: column;
   gap: 1.8rem;
   flex: 1;
+  max-height: 38rem;
 }
 .apostaAberta_scroll {
   display: flex;
@@ -16,7 +17,6 @@
   flex-direction: column;
   gap: 1.2rem;
   overflow-y: auto;
-  max-height: 23.965rem;
   height: 100%;
   width: 100%;
   padding-top: .7rem;
@@ -38,8 +38,9 @@
   );
 }
 .apostaAberta_content {
-  box-shadow: var(--box-shadow-small);
+  box-shadow: var(--box-shadow);
   border: var(--border-dark);
+  background-color: white;
   border-radius: 1rem;
   padding: 0.7rem 1.3rem;
   display: flex;
@@ -77,7 +78,7 @@
   border: 1px solid var(--dark);
   height: 1.7rem;      /* Alinhado com a altura dos seus botões */
   font-size: 1rem;
-  box-shadow: var(--box-shadow-small);
+  box-shadow: var(--box-shadow);
 }
 .apostaAberta_buttons{
   display: flex;
@@ -86,7 +87,7 @@
 }
 .apostaAberta_buttons button {
   border: var(--border-dark);
-  box-shadow: var(--box-shadow-small);
+  box-shadow: var(--box-shadow);
   color: white;
   border-radius: 0.3rem;
   width: 5.984rem;

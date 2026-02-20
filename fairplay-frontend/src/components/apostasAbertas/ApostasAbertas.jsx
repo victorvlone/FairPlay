@@ -16,7 +16,7 @@ function ApostasAbertas() {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await response.json();
-      setBets(data);
+      setBets(data.reverse());
     } catch (error) {
       console.error("Erro ao buscar apostas:", error);
     } finally {

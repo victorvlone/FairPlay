@@ -1,45 +1,49 @@
-.table_container{
-    background-color: var(--branco-f6);
-    box-shadow: var(--box-shadow);
-    border: var(--border-dark);
-    border-radius: 1rem;
-    padding: 4rem 1rem;
-    overflow-y: auto;
-    height: 33.8rem;
-    max-height: 33.8rem;
+.table_container {
+  background-color: var(--branco-f6);
+  box-shadow: var(--box-shadow);
+  border: var(--border-dark);
+  border-radius: 1rem;
+  padding: 4rem 1rem;
+  overflow-y: auto;
+  height: 33.8rem;
+  max-height: 33.8rem;
+  margin-bottom: 3rem;
 }
 
 .table {
-    width: 100%;
-    border-collapse: separate; 
-    border-spacing: 0 10px; 
-    text-align: center;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 10px;
+  text-align: center;
+}
+.table td {
+  padding: 8px 0;
 }
 
-.table tr td{
-    background-color: white;
-    box-shadow: var(--box-shadow-small);
-    border-top: var(--border-dark);
-    border-bottom: var(--border-dark);
-    font-weight: 600;
+.table tr td {
+  background-color: white;
+  box-shadow: var(--box-shadow);
+  border-top: var(--border-dark);
+  border-bottom: var(--border-dark);
+  font-weight: 600;
 }
 .table tr td:first-child {
-    border-left: var(--border-dark);
-    border-radius: 10px 0 0 10px; /* Arredonda o canto esquerdo */
+  border-left: var(--border-dark);
+  border-radius: 10px 0 0 10px; /* Arredonda o canto esquerdo */
 }
 .table tr td:last-child {
-    border-right: var(--border-dark);
-    border-radius: 0 10px 10px 0; /* Arredonda o canto direito */
+  border-right: var(--border-dark);
+  border-radius: 0 10px 10px 0; /* Arredonda o canto direito */
 }
-.apostasTable_icon{
-    font-size: 1.2rem
+.apostasTable_icon {
+  font-size: 1.2rem;
 }
-.green{
-    color: #6CCA55;
+.green {
+  color: #6cca55;
 }
-.red{
-    color: #E52121;
+.red {
+  color: #e52121;
 }
-.yellow{
-    color: #B7BD0C;
+.yellow {
+  color: #b7bd0c;
 }

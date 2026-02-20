@@ -1,7 +1,6 @@
 .desempenhoTable_section {
   display: grid;
   align-items: center;
-  text-align: center;
   gap: 2rem;
 }
 .desempenhoTable_buttons {
