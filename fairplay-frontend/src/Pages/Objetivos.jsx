@@ -14,7 +14,8 @@ function Objetivos() {
         descricao={
           <>
             <p>
-              Monitore sua evolução através de métricas detalhadas que revelam a
+              Monitore sua evolução através de métricas detalhadas que revelam a 
+        consistência da sua banca e o progresso em direção às suas metas mensais.
             </p>
           </>
         }

@@ -58,7 +58,7 @@ function App() {
   return (
     <Router>
       <Header onOpenAuth={openAuth} />
-      <div className="content-wrapper-center row row_align_top">
+      <div className="content-wrapper-center row row_without_padding">
         {authConfig.isOpen && (
           <Autenticacao
             className="col-end-6 sm-12"

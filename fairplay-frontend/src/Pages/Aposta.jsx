@@ -67,13 +67,13 @@ function Aposta() {
     <>
       <HeroPages
         className="sm-12 col-6 col-7 hero_home_custom"
-        titulo="Análise preditiva aplicada a apostas esportivas."
+        titulo="Otimize suas Entradas com Estatística"
         homePage={false}
         descricao={
           <>
             <p>
-              Transforme estatísticas em decisões mais seguras e bem
-              fundamentadas.
+              Alimente nosso algoritmo com os dados das partidas e receba 
+        recomendações precisas de valor para os mercados de gols e BTTS.
             </p>
           </>
         }

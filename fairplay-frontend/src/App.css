@@ -20,8 +20,11 @@
 }
 .row_align_top {
   align-items: start !important;
+}
+.row_without_padding{
   padding-top: 0 !important;
   padding-bottom: 0 !important;
+
 }
 .hero_main_content {
   display: flex;

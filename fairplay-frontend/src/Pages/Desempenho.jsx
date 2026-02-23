@@ -10,12 +10,19 @@ function Desempenho() {
         titulo="O refino analítico da sua performance"
         descricao={
           <>
-            <p>Utilize nossos filtros para identificar quais times, países e</p>
+            <p>
+              Utilize nossos filtros para identificar quais times, países e
+              mercados são mais lucrativos para a sua estratégia de apostas.
+            </p>
           </>
         }
       />
       <div className="content-wrapper-center row">
-        <ComponentHeader titulo="Ranking de Lucratividade" descricao="Onde você tem mais lucro?" className="col-12" />
+        <ComponentHeader
+          titulo="Ranking de Lucratividade"
+          descricao="Onde você tem mais lucro?"
+          className="col-12"
+        />
         <DesempenhoTable className="sm-12 col-6" />
       </div>
     </>

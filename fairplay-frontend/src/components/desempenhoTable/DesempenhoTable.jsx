@@ -37,52 +37,61 @@ function DesempenhoTable({ className }) {
 
   // 2. Lógica que transforma a lista de apostas em um Ranking
   const ranking = useMemo(() => {
-  const counts = {};
+    const marketNames = {
+      OVER_05_HT: "Over 0.5 HT",
+      OVER_15: "Over 1.5",
+      OVER_25: "Over 2.5",
+      AMBAS_MARCAM: "Ambas Marcam",
+    };
+    const counts = {};
 
-  history.forEach((bet) => {
-    // 1. Filtro de Tipo de Aposta (Ainda usa o resultado do bilhete como um todo)
-    if (filter === "type") {
-      const isWin = bet.actualReturn > bet.betValue;
-      const isLoss = bet.actualReturn === 0;
-      const key = bet.type;
-      
-      if (key) {
-        if (!counts[key]) counts[key] = { name: key, wins: 0, losses: 0 };
-        if (isWin) counts[key].wins += 1;
-        if (isLoss) counts[key].losses += 1;
-      }
-    } 
-    // 2. Filtros de Time, Liga e País (Olham o resultado INDIVIDUAL de cada match)
-    else {
-      bet.matches?.forEach((match) => {
-        // Pega o resultado específico daquela seleção/match
-        const isMatchGreen = match.result === "GREEN";
-        const isMatchRed = match.result === "RED";
+    history.forEach((bet) => {
+      // 1. Filtro de Tipo (Simples/Múltipla)
+      if (filter === "type") {
+        const isWin = bet.actualReturn > bet.betValue;
+        const isLoss = bet.actualReturn === 0;
+        const key = bet.type;
 
-        let keys = [];
-        if (filter === "team") {
-          keys = [match.homeTeam?.name, match.awayTeam?.name];
-        } else if (filter === "league") {
-          keys = [match.league?.name];
-        } else if (filter === "country") {
-          keys = [match.league?.country?.name || "País não informado"];
-        }
-
-        keys.forEach((key) => {
-          if (!key) return;
+        if (key) {
           if (!counts[key]) counts[key] = { name: key, wins: 0, losses: 0 };
-          
-          if (isMatchGreen) counts[key].wins += 1;
-          if (isMatchRed) counts[key].losses += 1;
-        });
-      });
-    }
-  });
+          if (isWin) counts[key].wins += 1;
+          if (isLoss) counts[key].losses += 1;
+        }
+      }
+      // 2. Filtros que olham cada jogo individualmente (Time, Liga, País e MERCADO/APOSTA)
+      else {
+        bet.matches?.forEach((match) => {
+          const isMatchGreen = match.result === "GREEN";
+          const isMatchRed = match.result === "RED";
 
-  return Object.values(counts)
-    .map((item) => ({ ...item, balance: item.wins - item.losses }))
-    .sort((a, b) => b.balance - a.balance);
-}, [history, filter]);
+          let keys = [];
+          if (filter === "team") {
+            keys = [match.homeTeam?.name, match.awayTeam?.name];
+          } else if (filter === "league") {
+            keys = [match.league?.name];
+          } else if (filter === "country") {
+            keys = [match.league?.country?.name || "País não informado"];
+          } else if (filter === "market") {
+            const rawMarket = match.betMade;
+            const prettyMarket = marketNames[rawMarket] || rawMarket;
+            keys = [prettyMarket];
+          }
+
+          keys.forEach((key) => {
+            if (!key) return;
+            if (!counts[key]) counts[key] = { name: key, wins: 0, losses: 0 };
+
+            if (isMatchGreen) counts[key].wins += 1;
+            if (isMatchRed) counts[key].losses += 1;
+          });
+        });
+      }
+    });
+
+    return Object.values(counts)
+      .map((item) => ({ ...item, balance: item.wins - item.losses }))
+      .sort((a, b) => b.balance - a.balance);
+  }, [history, filter]);
 
   if (loading) return <p>Carregando ranking...</p>;
 
@@ -109,10 +118,16 @@ function DesempenhoTable({ className }) {
             País
           </button>
           <button
+            className={filter === "market" ? styles.active : ""}
+            onClick={() => setFilter("market")}
+          >
+            Aposta {/* Novo botão aqui */}
+          </button>
+          <button
             className={filter === "type" ? styles.active : ""}
             onClick={() => setFilter("type")}
           >
-            Aposta
+            Tipo
           </button>
         </div>
       </div>
