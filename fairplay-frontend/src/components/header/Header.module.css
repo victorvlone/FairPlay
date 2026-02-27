@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: space-between;
   background-color: transparent;
-  color: var(--dark);
+  color: var(--text-color);
 }
 .header h1 {
   text-transform: uppercase;
@@ -50,7 +50,7 @@
   font-weight: 600;
   list-style: none;
   text-transform: uppercase;
-  color: var(--dark);
+  color: var(--text-color);
 }
 .header_nav ul li {
   transition: color 0.2s ease-in-out;
@@ -87,6 +87,9 @@
   }
   .header_nav_icons {
     display: none;
+  }
+  .icon_darkMode{
+    font-size: 2rem;
   }
   .icon_user {
     font-size: 4rem;

@@ -18,6 +18,14 @@ body {
   color: #111;
   -webkit-font-smoothing: antialiased;
 }
+body.dark-mode {
+  background-color: var(--dark-background);
+  --background-component: var(--dark-background-component);
+  --text-color: white;
+  --background-component-item: var(--dark-background-component-item);
+  color: white;
+  transition: background-color 0.3s ease;
+}
 
 a {
   text-decoration: none;

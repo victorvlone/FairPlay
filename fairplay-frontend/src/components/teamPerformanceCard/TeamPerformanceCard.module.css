@@ -4,7 +4,7 @@
   width: fit-content;
   align-items: center;
   gap: 2rem;
-  background-color: var(--branco-f6);
+  background-color: var(--background-component);
   border: var(--border-dark);
   border-radius: 1rem;
   box-shadow: var(--box-shadow);
@@ -32,7 +32,7 @@
 .match_iconName_container {
   display: flex;
   gap: 0.3rem;
-  background-color: white;
+  background-color: var(--background-component-item);
   padding: 0.5rem 1.4rem;
   border-radius: 1rem;
   box-shadow: var(--box-shadow);
@@ -76,7 +76,7 @@
 .ft_input {
   outline: none;
   border-radius: 0.5rem;
-  background-color: white;
+  background-color: var(--background-component-item);
   color: var(--dark);
   border: none;
   box-shadow: var(--box-shadow);
@@ -130,7 +130,7 @@
 .teamPerformance_selects select, .teamPerformance_selects input{
   border: var(--border-dark);
   box-shadow: var(--box-shadow);
-  background-color: white;
+  background-color: var(--background-component-item);
   color: var(--dark);
   border-radius: 1rem;
   padding: .4rem;

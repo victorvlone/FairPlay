@@ -1,15 +1,3 @@
-.table_container {
-  background-color: var(--branco-f6);
-  box-shadow: var(--box-shadow);
-  border: var(--border-dark);
-  border-radius: 1rem;
-  padding: 4rem 1rem;
-  overflow-y: auto;
-  height: 33.8rem;
-  max-height: 33.8rem;
-  margin-bottom: 3rem;
-}
-
 .table {
   width: 100%;
   border-collapse: separate;

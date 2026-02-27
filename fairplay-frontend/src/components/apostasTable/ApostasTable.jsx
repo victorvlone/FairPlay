@@ -2,7 +2,12 @@ import styles from "./ApostasTable.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSquarePlus, faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 
-function ApostasTable({ className, jogos, onEnviarParaCaderneta, onRemoverAnalise }) {
+function ApostasTable({
+  className,
+  jogos,
+  onEnviarParaCaderneta,
+  onRemoverAnalise,
+}) {
   const handleMandarProPai = (jogo) => {
     const pOver15 = jogo.estatisticas.over15FT * 10;
     const pOver25 = jogo.estatisticas.over25FT * 10;
@@ -51,8 +56,28 @@ function ApostasTable({ className, jogos, onEnviarParaCaderneta, onRemoverAnalis
     return styles.red;
   };
 
+  const jogosUnicos = [];
+  const chavesVistas = new Set();
+
+  // Criamos uma versão invertida e filtramos as duplicatas de confronto
+  [...jogos].reverse().forEach((jogo) => {
+    const nomeCasa = jogo.isPersisted
+      ? jogo.homeTeam?.name
+      : jogo.equipes?.casa;
+    const nomeFora = jogo.isPersisted
+      ? jogo.awayTeam?.name
+      : jogo.equipes?.fora;
+
+    // Criamos uma chave única baseada nos dois times
+    const chaveConfronto = `${nomeCasa}-${nomeFora}`;
+
+    if (!chavesVistas.has(chaveConfronto)) {
+      chavesVistas.add(chaveConfronto);
+      jogosUnicos.push(jogo);
+    }
+  });
   return (
-    <div className={`${styles.table_container} ${className}`}>
+    <div className={`${className} table_container`}>
       <table className="custom_table">
         <thead>
           <tr>
@@ -65,15 +90,17 @@ function ApostasTable({ className, jogos, onEnviarParaCaderneta, onRemoverAnalis
           </tr>
         </thead>
         <tbody>
-          {jogos.length === 0 ? (
+          {jogosUnicos.length === 0 ? (
             <tr>
               <td colSpan="6" style={{ textAlign: "center", padding: "20px" }}>
                 Nenhuma análise encontrada.
               </td>
             </tr>
           ) : (
-            jogos.map((jogo, index) => {
-              const rowKey = jogo.isPersisted ? `db-${jogo.id}` : `local-${index}-${jogo.equipes.casa}`;
+            jogosUnicos.map((jogo, index) => {
+              const rowKey = jogo.isPersisted
+                ? `db-${jogo.id}`
+                : `local-${index}`;
               const nomeCasa = jogo.isPersisted
                 ? jogo.homeTeam?.name
                 : jogo.equipes?.casa;
@@ -104,7 +131,10 @@ function ApostasTable({ className, jogos, onEnviarParaCaderneta, onRemoverAnalis
               );
 
               return (
-                <tr key={rowKey} className={jogo.isPersisted ? styles.row_db : ""}>
+                <tr
+                  key={rowKey}
+                  className={jogo.isPersisted ? styles.row_db : ""}
+                >
                   <td className={styles.team_cell}>
                     {`${nomeCasa} x ${nomeFora}`}
                   </td>

@@ -1,11 +1,11 @@
 import { LogIn, Menu } from "lucide-react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleUser } from "@fortawesome/free-solid-svg-icons";
+import { faCircleUser, faMoon } from "@fortawesome/free-solid-svg-icons";
 import styles from "./Header.module.css";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-function Header({ onOpenAuth }) {
+function Header({ onOpenAuth, toggleDarkMode, isDarkMode }) {
   const token = localStorage.getItem("token");
   const [userData, setUserData] = useState({
     nome: "Usuário",
@@ -46,6 +46,13 @@ function Header({ onOpenAuth }) {
               <li>
                 <Link to="/ciclos">Ciclos</Link>
               </li>
+              <li>
+                <FontAwesomeIcon
+                  icon={faMoon}
+                  className={`${styles.icon_darkMode} ${isDarkMode ? styles.active : ""}`}
+                  onClick={toggleDarkMode} // Chama a função ao clicar
+                />
+              </li>
             </ul>
             <div className={styles.header_nav_buttons}>
               {!token ? (
@@ -59,7 +66,12 @@ function Header({ onOpenAuth }) {
                 <div className={styles.header_nav_login}>
                   <div className={styles.header_nav_login_data}>
                     <h5>{userData.nome}</h5>
-                    <h6>R$ {userData.banca.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</h6>
+                    <h6>
+                      R${" "}
+                      {userData.banca.toLocaleString("pt-BR", {
+                        minimumFractionDigits: 2,
+                      })}
+                    </h6>
                   </div>
                   <FontAwesomeIcon
                     icon={faCircleUser}

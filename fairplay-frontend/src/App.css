@@ -1,10 +1,14 @@
 :root {
   --text-shadow: 0 1.7px 2px rgba(0, 0, 0, 0.25);
   --azul: #0368ff;
-  --dark: #191a23;
-  --branco-f6: #f6f6f6;
+  --text-color: #191a23;
+  --background-component: #f6f6f6;
+  --background-component-item: #ffffff;
   --box-shadow: 0 4px 10px rgba(25, 26, 35, 0.25);
   --border-dark: 1px solid rgba(25, 26, 35, 0.05);
+  --dark-background: #050811;
+  --dark-background-component: #0A0E19;
+  --dark-background-component-item: #151B2D;
 }
 .content-wrapper-center {
   padding: 3rem 1rem 2rem;
@@ -45,7 +49,7 @@
   box-shadow: var(--box-shadow);
   width: 100%;
   margin: 0;
-  background-color: #f6f6f6;
+  background-color: var(--background-component);
   max-height: 60rem;
   height: 40rem;
   padding: 1rem;
@@ -86,7 +90,7 @@
   border-radius: 1rem;
 }
 .custom_table td {
-  background-color: white;
+  background-color: var(--background-component-item);
 }
 .custom_table td:first-child {
   border-radius: 1rem 0 0 1rem;
@@ -133,6 +137,9 @@
   }
   .col-start-8 {
     grid-column: 8 / -1;
+  }
+    .col-start-9 {
+    grid-column: 9 / 13;
   }
   .col-8-10 {
     grid-column: 8 / 11;

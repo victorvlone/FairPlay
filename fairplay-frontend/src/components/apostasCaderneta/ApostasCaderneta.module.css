@@ -11,7 +11,7 @@
 }
 
 .caderneta_container {
-  background-color: #f4f4f4;
+  background-color: var(--background-component);
   border-radius: 15px;
   padding: 2rem;
   flex: 1;

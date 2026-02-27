@@ -1,5 +1,5 @@
 .apostasAbertas_container {
-  background-color: var(--branco-f6);
+  background-color: var(--background-component);
   border: var(--border-dark);
   box-shadow: var(--box-shadow);
   padding: 2rem;
@@ -40,7 +40,7 @@
 .apostaAberta_content {
   box-shadow: var(--box-shadow);
   border: var(--border-dark);
-  background-color: white;
+  background-color: var(--background-component-item);
   border-radius: 1rem;
   padding: 0.7rem 1.3rem;
   display: flex;
@@ -72,7 +72,7 @@
 .apostaAberta_retorno_input input {
   width: 100%;
   min-width: 0;
-  background-color: var(--branco-f6);
+  background-color: var(--background-component);
   padding: 0.3rem 0.5rem;
   border-radius: 0.4rem;
   border: 1px solid var(--dark);

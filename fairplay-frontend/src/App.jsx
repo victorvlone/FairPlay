@@ -7,31 +7,41 @@ import Objetivos from "./Pages/Objetivos";
 import { useEffect, useState } from "react";
 import Aposta from "./Pages/Aposta";
 import Autenticacao from "./components/autenticacao/Autenticacao";
+import Ciclos from "./Pages/Ciclos";
+
 function App() {
+  const [isDarkMode, setIsDarkMode] = useState(false);
   const [authConfig, setAuthConfig] = useState({
     isOpen: false,
     mode: "cadastro",
   });
 
+  useEffect(() => {
+    if (isDarkMode) {
+      document.body.classList.add("dark-mode");
+    } else {
+      document.body.classList.remove("dark-mode");
+    }
+  }, [isDarkMode]);
+
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("userId");
     localStorage.removeItem("userBankroll");
-    // Redireciona para o login
     window.location.href = "/";
   };
 
   const openAuth = (mode) => {
     setAuthConfig((prev) => {
-      // Se já estiver aberto E o modo for o mesmo, a gente fecha (onClose)
+
       if (prev.isOpen && prev.mode === mode) {
         return { ...prev, isOpen: false };
       }
-      // Caso contrário, abre ou troca o modo (login <-> cadastro)
       return { isOpen: true, mode };
     });
   };
   const closeAuth = () => setAuthConfig({ ...authConfig, isOpen: false });
+  const toggleDarkMode = () => setIsDarkMode(!isDarkMode);
 
   useEffect(() => {
     const checkAuth = async () => {
@@ -57,7 +67,7 @@ function App() {
 
   return (
     <Router>
-      <Header onOpenAuth={openAuth} />
+      <Header onOpenAuth={openAuth} toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} />
       <div className="content-wrapper-center row row_without_padding">
         {authConfig.isOpen && (
           <Autenticacao
@@ -75,6 +85,7 @@ function App() {
         <Route path="/desempenho" element={<Desempenho />} />
         <Route path="/objetivos" element={<Objetivos />} />
         <Route path="/apostas" element={<Aposta />} />
+        <Route path="/ciclos" element={<Ciclos />} />
       </Routes>
     </Router>
   );

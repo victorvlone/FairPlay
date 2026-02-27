@@ -1,6 +1,6 @@
 .evolucaoChart_container {
     height: 34rem;
-    background-color: var(--branco-f6);
+    background-color: var(--background-component);
     border-radius: 1rem;
     box-shadow: var(--box-shadow);
     display: flex;
